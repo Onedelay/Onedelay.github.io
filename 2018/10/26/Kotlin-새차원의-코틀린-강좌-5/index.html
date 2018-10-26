@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>[Kotlin] 새차원의 코틀린 강좌(5) | Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="kotlin">
+    
+    <meta name="description" content="새차원의 코틀린 강좌 - Packages, Return and Jumps 패키지 소스 파일은 패키지 선언으로 시작됨 모든 컨텐츠(클래스, 함수, …)는 패키지에 포함됨 패키지를 명세하지 않으면 이름이 없는 기본 패키지에 포함됨 → 디폴트 패키지에 포함되므로, 다른 파일에서도 자동으로 import 되어 사용 가능해짐.  12345678910package fo">
+<meta name="keywords" content="kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Kotlin] 새차원의 코틀린 강좌(5)">
+<meta property="og:url" content="https://Onedelay.github.io/2018/10/26/Kotlin-새차원의-코틀린-강좌-5/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="새차원의 코틀린 강좌 - Packages, Return and Jumps 패키지 소스 파일은 패키지 선언으로 시작됨 모든 컨텐츠(클래스, 함수, …)는 패키지에 포함됨 패키지를 명세하지 않으면 이름이 없는 기본 패키지에 포함됨 → 디폴트 패키지에 포함되므로, 다른 파일에서도 자동으로 import 되어 사용 가능해짐.  12345678910package fo">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-10-26T08:56:39.080Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Kotlin] 새차원의 코틀린 강좌(5)">
+<meta name="twitter:description" content="새차원의 코틀린 강좌 - Packages, Return and Jumps 패키지 소스 파일은 패키지 선언으로 시작됨 모든 컨텐츠(클래스, 함수, …)는 패키지에 포함됨 패키지를 명세하지 않으면 이름이 없는 기본 패키지에 포함됨 → 디폴트 패키지에 포함되므로, 다른 파일에서도 자동으로 import 되어 사용 가능해짐.  12345678910package fo">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">공부한것들 정리하는 블로그</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Language/">Language</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Language/강의정리노트/">강의정리노트</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Language/">Language</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Language/강의정리노트/">강의정리노트</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="cat-Kotlin-새차원의-코틀린-강좌-5" class="article article-single article-type-cat" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        [Kotlin] 새차원의 코틀린 강좌(5)
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/10/26/Kotlin-새차원의-코틀린-강좌-5/" class="article-date">
+            <time datetime="2018-10-26T08:53:25.000Z" itemprop="datePublished">2018-10-26</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/kotlin/">kotlin</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="새차원의-코틀린-강좌-Packages-Return-and-Jumps"><a href="#새차원의-코틀린-강좌-Packages-Return-and-Jumps" class="headerlink" title="새차원의 코틀린 강좌 - Packages, Return and Jumps"></a>새차원의 코틀린 강좌 - Packages, Return and Jumps</h2><p><br></p>
+<h5 id="패키지"><a href="#패키지" class="headerlink" title="패키지"></a>패키지</h5><ul>
+<li>소스 파일은 패키지 선언으로 시작됨</li>
+<li>모든 컨텐츠(클래스, 함수, …)는 패키지에 포함됨</li>
+<li>패키지를 명세하지 않으면 이름이 없는 기본 패키지에 포함됨 → 디폴트 패키지에 포함되므로, 다른 파일에서도 자동으로 import 되어 사용 가능해짐.</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> foo.bar</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">baz</span><span class="params">()</span></span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Goo</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">    foo.bar.baz()</span><br><span class="line">    foo.bar.Goo()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><br></p>
+<h5 id="기본-패키지"><a href="#기본-패키지" class="headerlink" title="기본 패키지"></a>기본 패키지</h5><ul>
+<li>기본으로 import되는 package</li>
+<li>플랫폼 별로 import 되는 package도 다른 부분이 있음</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">kotlin.*</span><br><span class="line">kotlin.<span class="keyword">annotation</span>.*</span><br><span class="line">kotlin.collections.*</span><br><span class="line">kotlin.comparisons.* (since <span class="number">1.1</span>)</span><br><span class="line">kotlin.io.*</span><br><span class="line">kotlin.ranges.*</span><br><span class="line">kotlin.sequences.*</span><br><span class="line">kotlin.text.*</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">JVM:</span><br><span class="line">java.lang.*</span><br><span class="line">kotlin.jvm.*</span><br><span class="line"></span><br><span class="line">JS:</span><br><span class="line">kotlin.js.*</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><br></p>
+<h5 id="imports"><a href="#imports" class="headerlink" title="imports"></a>imports</h5><ul>
+<li>기본으로 포함되는 패키지 외에도, 필요한 package 들을 직접 import 할 수 있음</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Bar 1개만 import</span></span><br><span class="line"><span class="keyword">import</span> foo.Bar</span><br><span class="line"></span><br><span class="line"><span class="comment">// 'foo' 패키지에 모든 것을 import</span></span><br><span class="line"><span class="keyword">import</span> foo.*</span><br><span class="line"></span><br><span class="line"><span class="comment">// foo.Bar</span></span><br><span class="line"><span class="comment">// bar.Bar 이름이 충돌나는 경우 'as' 키워드로 로컬 리네임 가능</span></span><br><span class="line"><span class="keyword">import</span> bar.Bar <span class="keyword">as</span> bBar</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><br></p>
+<h5 id="3가지-Jump-표현식"><a href="#3가지-Jump-표현식" class="headerlink" title="3가지 Jump 표현식"></a>3가지 Jump 표현식</h5><ul>
+<li>return : 함수나 익명 함수에서 반환</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">sum</span><span class="params">(a: <span class="type">Int</span>, b: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">   println(<span class="string">"a: <span class="variable">$a</span>, b: <span class="variable">$b</span>"</span>)</span><br><span class="line">   <span class="keyword">return</span> a + b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<ul>
+<li>break : 루프를 종료 시킴</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (x <span class="keyword">in</span> <span class="number">1</span>..<span class="number">10</span>) &#123;</span><br><span class="line">   <span class="keyword">if</span> (x &gt; <span class="number">2</span>) <span class="keyword">break</span></span><br><span class="line">   println(<span class="string">"x: <span class="variable">$x</span>"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<ul>
+<li>continue : 루프의 다음 단계로 진행</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (x <span class="keyword">in</span> <span class="number">1</span>..<span class="number">10</span>) &#123;</span><br><span class="line">   <span class="keyword">if</span> (x &lt; <span class="number">2</span>) <span class="keyword">continue</span></span><br><span class="line">   println(<span class="string">"x: <span class="variable">$x</span>"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><br></p>
+<h5 id="Label로-break-continue"><a href="#Label로-break-continue" class="headerlink" title="Label로 break, continue"></a>Label로 break, continue</h5><ul>
+<li>레이블 표현 : label@, abc@, fooBar@<ul>
+<li>식별자 + @ 형태로 사용</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 바깥 for 문까지 종료시킬 수 있다</span></span><br><span class="line"><span class="symbol">loop@</span> <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>..<span class="number">10</span>) &#123;</span><br><span class="line">    println(<span class="string">"--- i: <span class="variable">$i</span> ---"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (j <span class="keyword">in</span> <span class="number">1</span>..<span class="number">10</span>) &#123;</span><br><span class="line">        println(<span class="string">"j: <span class="variable">$j</span>"</span>)</span><br><span class="line">        <span class="keyword">if</span> (i + j &gt; <span class="number">12</span>) &#123;</span><br><span class="line">            <span class="keyword">break</span><span class="symbol">@loop</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="symbol">loop@</span> <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>..<span class="number">10</span>) &#123;</span><br><span class="line">    println(<span class="string">"--- i: <span class="variable">$i</span> ---"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (j <span class="keyword">in</span> <span class="number">1</span>..<span class="number">10</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (j &lt; <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">continue</span><span class="symbol">@loop</span></span><br><span class="line">        &#125;</span><br><span class="line">        println(<span class="string">"j: <span class="variable">$j</span>"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><br></p>
+<h5 id="Label로-return"><a href="#Label로-return" class="headerlink" title="Label로 return"></a>Label로 return</h5><ul>
+<li>코틀린에서 중첩될 수 있는 요소들<ul>
+<li>함수 리터럴 (function literals)</li>
+<li>지역함수 (local function)</li>
+<li>객체 표현식 (object expression)</li>
+<li>함수 (functions)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> ints = listOf(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">ints.forEach(<span class="function"><span class="title">fun</span><span class="params">(value: <span class="type">Int</span>)</span></span> &#123; <span class="comment">// 익명함수</span></span><br><span class="line">    <span class="keyword">if</span> (value == <span class="number">1</span>) <span class="keyword">return</span>     <span class="comment">// 현재 함수만 종료됨</span></span><br><span class="line">    print(value)</span><br><span class="line">&#125;)</span><br><span class="line">print(<span class="string">"END"</span>)</span><br><span class="line"><span class="comment">// 출력값 : 023END</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ints.forEach &#123;                 <span class="comment">// 람다함수</span></span><br><span class="line">    <span class="keyword">if</span> (it == <span class="number">1</span>) <span class="keyword">return</span>        <span class="comment">// 상위 함수까지 모두 종료됨</span></span><br><span class="line">    print(it)</span><br><span class="line">&#125;</span><br><span class="line">print(<span class="string">"END"</span>)</span><br><span class="line"><span class="comment">// 출력값 : 0</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><br></p>
+<h5 id="람다식에서-return-시-주의사항"><a href="#람다식에서-return-시-주의사항" class="headerlink" title="람다식에서 return 시 주의사항"></a>람다식에서 return 시 주의사항</h5><ul>
+<li>람다식에서 return 시 nearest enclosing 함수가 return 됨</li>
+<li>람다식만 return 하려면 label 을 이용해야함</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> ints = listOf(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">ints.forEach &#123;                 <span class="comment">// 람다함수</span></span><br><span class="line">    <span class="keyword">if</span> (it == <span class="number">1</span>) <span class="keyword">return</span>        <span class="comment">// 상위 함수까지 모두 종료됨</span></span><br><span class="line">    print(it)</span><br><span class="line">&#125;</span><br><span class="line">print(<span class="string">"END"</span>)</span><br><span class="line"><span class="comment">// 출력값 : 0</span></span><br><span class="line"></span><br><span class="line">ints.forEach <span class="symbol">label@</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (it == <span class="number">1</span>) <span class="keyword">return</span><span class="symbol">@label</span></span><br><span class="line">    print(it)</span><br><span class="line">&#125;</span><br><span class="line">print(<span class="string">"END"</span>)</span><br><span class="line"><span class="comment">// 출력값 : 023END</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><br></p>
+<h5 id="암시적-레이블"><a href="#암시적-레이블" class="headerlink" title="암시적 레이블"></a>암시적 레이블</h5><ul>
+<li>람다식에서만 return 하는 경우 label 을 이용해서 return 해야 함</li>
+<li>직접 label 을 사용하는 것보다 암시적 레이블이 편리함</li>
+<li>암시적 레이블은 람다가 사용된 함수(ex. forEach)의 이름과 동일</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ints.forEach &#123;</span><br><span class="line">    <span class="keyword">if</span> (it == <span class="number">1</span>) <span class="keyword">return</span><span class="symbol">@forEach</span></span><br><span class="line">    print(it)</span><br><span class="line">&#125;</span><br><span class="line">print(<span class="string">"END"</span>)</span><br><span class="line"><span class="comment">// 출력값 : 023END</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><br></p>
+<h5 id="레이블-return-시-값을-반환할-경우"><a href="#레이블-return-시-값을-반환할-경우" class="headerlink" title="레이블 return 시 값을 반환할 경우"></a>레이블 return 시 값을 반환할 경우</h5><ul>
+<li>return@label 1 형태로 사용</li>
+<li>return + @label + 값</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">()</span></span>: List&lt;String&gt; &#123;</span><br><span class="line">    <span class="keyword">var</span> ints = listOf(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">    <span class="keyword">val</span> result = ints.map &#123;</span><br><span class="line">        <span class="keyword">if</span> (it == <span class="number">0</span>) <span class="keyword">return</span><span class="symbol">@map</span> <span class="string">"zero"</span> <span class="comment">// return at named label</span></span><br><span class="line">        <span class="string">"number <span class="variable">$it</span>"</span>            <span class="comment">// expression returned from lambda</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>- 출력 : [zero, number 1, number 2, number 3]</p>
+<p>  -&gt; print(List<string>) 해도 그냥 출력된다. 자바는 Arrays.toString 이런 메서드 사용했어야 됐는데 코틀린 너무 편한것같다.</string></p>
+<p>아래는 IDE 에서 바꿔준 코드. 변수(result)는 return 에서만 사용되므로 inline 으로 만드는게 좋다는 메시지가 나와서 바꿔준다.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo2</span><span class="params">()</span></span>: List&lt;String&gt; &#123;</span><br><span class="line">    <span class="keyword">val</span> ints = listOf(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">    <span class="keyword">return</span> ints.map &#123;</span><br><span class="line">        <span class="keyword">if</span> (it == <span class="number">0</span>) <span class="keyword">return</span><span class="symbol">@map</span> <span class="string">"zero"</span> <span class="comment">// return at named label</span></span><br><span class="line">        <span class="string">"number <span class="variable">$it</span>"</span>            <span class="comment">// expression returned from lambda</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p>출처 : 새차원의 코틀린 강좌 <a href="https://www.inflearn.com/course/%EC%BD%94%ED%8B%80%EB%A6%B0-%EA%B0%95%EC%A2%8C-%EC%83%88%EC%B0%A8%EC%9B%90/" target="_blank" rel="noopener">https://www.inflearn.com/course/%EC%BD%94%ED%8B%80%EB%A6%B0-%EA%B0%95%EC%A2%8C-%EC%83%88%EC%B0%A8%EC%9B%90/</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://Onedelay.github.io/2018/10/26/Kotlin-새차원의-코틀린-강좌-5/" data-id="cjnpuhrx30007ugvyjb2pbg9m" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/Onedelay" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/10/26/Kotlin-새차원의-코틀린-강좌-6/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            [Kotlin] 새차원의 코틀린 강좌(6)
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/10/26/Kotlin-새차원의-코틀린-강좌-4/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">[Kotlin] 새차원의 코틀린 강좌(4)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Language/">Language</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Language/강의정리노트/">강의정리노트</a><span class="category-list-count">8</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin/">kotlin</a><span class="tag-list-count">8</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Language/">Language</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Language/강의정리노트/">강의정리노트</a></p>
+                            <p class="item-title"><a href="/2018/10/26/Kotlin-새차원의-코틀린-강좌-8/" class="title">[Kotlin] 새차원의 코틀린 강좌(8)</a></p>
+                            <p class="item-date"><time datetime="2018-10-26T09:02:54.000Z" itemprop="datePublished">2018-10-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Language/">Language</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Language/강의정리노트/">강의정리노트</a></p>
+                            <p class="item-title"><a href="/2018/10/26/Kotlin-새차원의-코틀린-강좌-7/" class="title">[Kotlin] 새차원의 코틀린 강좌(7)</a></p>
+                            <p class="item-date"><time datetime="2018-10-26T09:01:01.000Z" itemprop="datePublished">2018-10-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Language/">Language</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Language/강의정리노트/">강의정리노트</a></p>
+                            <p class="item-title"><a href="/2018/10/26/Kotlin-새차원의-코틀린-강좌-6/" class="title">[Kotlin] 새차원의 코틀린 강좌(6)</a></p>
+                            <p class="item-date"><time datetime="2018-10-26T08:56:56.000Z" itemprop="datePublished">2018-10-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Language/">Language</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Language/강의정리노트/">강의정리노트</a></p>
+                            <p class="item-title"><a href="/2018/10/26/Kotlin-새차원의-코틀린-강좌-5/" class="title">[Kotlin] 새차원의 코틀린 강좌(5)</a></p>
+                            <p class="item-date"><time datetime="2018-10-26T08:53:25.000Z" itemprop="datePublished">2018-10-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Language/">Language</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Language/강의정리노트/">강의정리노트</a></p>
+                            <p class="item-title"><a href="/2018/10/26/Kotlin-새차원의-코틀린-강좌-4/" class="title">[Kotlin] 새차원의 코틀린 강좌(4)</a></p>
+                            <p class="item-date"><time datetime="2018-10-26T08:36:25.000Z" itemprop="datePublished">2018-10-26</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">9</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 Onedelay</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://Onedelay.github.io/2018/10/26/Kotlin-새차원의-코틀린-강좌-5/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
