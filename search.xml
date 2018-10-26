@@ -3,17 +3,25 @@
   
     
     <entry>
-      <title>test</title>
-      <link href="/2018/10/26/test/"/>
-      <url>/2018/10/26/test/</url>
+      <title>[Kotlin] 새차원의 코틀린 강좌(1)</title>
+      <link href="/2018/10/26/Kotlin-%EC%83%88%EC%B0%A8%EC%9B%90%EC%9D%98-%EC%BD%94%ED%8B%80%EB%A6%B0-%EA%B0%95%EC%A2%8C-1/"/>
+      <url>/2018/10/26/Kotlin-%EC%83%88%EC%B0%A8%EC%9B%90%EC%9D%98-%EC%BD%94%ED%8B%80%EB%A6%B0-%EA%B0%95%EC%A2%8C-1/</url>
       
-        <content type="html"><![CDATA[<h2 id="1-테스트"><a href="#1-테스트" class="headerlink" title="1. 테스트"></a>1. 테스트</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"hello world!"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>마크다운 잘 먹히나 한번 보자</strong></p><p>참고 블로그는 여기</p><p><a href="https://wonheesoo.github.io/2018/01/13/Hexo-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-2-%EC%84%A4%EC%A0%95-%ED%85%8C%EB%A7%88/" target="_blank" rel="noopener">https://wonheesoo.github.io/2018/01/13/Hexo-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-2-%EC%84%A4%EC%A0%95-%ED%85%8C%EB%A7%88/</a></p><blockquote><p>이거 은근 귀찮은 작업이구만? 게다가 중국어 투성이라 뽝취뉍</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<h2 id="새차원의-코틀린-강좌-Why-Kotlin"><a href="#새차원의-코틀린-강좌-Why-Kotlin" class="headerlink" title="새차원의 코틀린 강좌 - Why Kotlin"></a>새차원의 코틀린 강좌 - Why Kotlin</h2><h5 id="멀티-플랫폼에서-개발할-수-있다"><a href="#멀티-플랫폼에서-개발할-수-있다" class="headerlink" title="멀티 플랫폼에서 개발할 수 있다."></a>멀티 플랫폼에서 개발할 수 있다.</h5><p>JVM, Android, JS(웹브라우저), Native(서버 곧 지원)</p><h5 id="Why-kotlin"><a href="#Why-kotlin" class="headerlink" title="Why kotlin"></a>Why kotlin</h5><ul><li><p><strong>Concise</strong> 코틀린은 문법 자체가 간결하다. 코드 길이가 짧은 건 무조건 좋다 나쁘다라고 단정할 수는 없는 부분이지만, 코드가 간결해지면 유지보수를 조금 더 편하게 할 수 있다. 또한 자바는 보통 정해진 원칙을 엄격하게 따르면서 쓰는데, 코틀린은 좀 더 다양하게 표현을 확장할 수 있다. Rx 같은 함수 프로그래밍을 할 때면 복잡한 람다식을 사용하는 경우가 많은데, 코틀린을 활용하면 람다식을 보다 간편하게 활용할 수 있다. 김상우 개발자는 “코틀린으로 작성해 기존 자바 코드보다 절반에서 최대 4분의 1로 코드를 줄인 적도 있다”라고 설명했다.</p></li><li><p><strong>Safe</strong> 언어 레벨에서 NPE를 안전하게 처리할 수 있다. null 자체가 허용되지 않아 새로운 타입 ?(Nullable)을 제공한다.</p><p>또한 auto-cast를 이용해 캐스팅 오류도 줄여준다.</p></li></ul><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">calculateTotal</span><span class="params">(obj: <span class="type">Any</span>)</span></span> &#123;</span><br><span class="line">   <span class="keyword">if</span> (obj <span class="keyword">is</span> Invoice) obj.calculateTotal()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li><strong>Interoperable</strong> 자바와 100% 함께 운용 가능하다. (예전에 배울땐 99%였는데, 병렬 처리 쪽이었던걸로 기억한다.) 프로젝트 내에 코틀린 파일과 자바파일이 함께 있어도 문제 없이 동작한다.</li><li><p><strong>Tool-friendly</strong> 안드로이드 스튜디오와 친숙하다(?)</p></li><li><p><strong>GDE들의 코틀린에 대한 답변</strong></p><ul><li>코틀린을 사용함으로써 내 코드는 간단하고 더 좋아졌다.</li><li>코틀린은 가끔씩 내가 10명의 개발자인 것 같이 느끼게 해준다.</li><li>코틀린은 정체된 안드로이드 세상을 위한 진정한 게임 체인저이다.</li><li>자바/안드로이드 개발자들에겐 러닝 커브가 상당히 낮다.</li><li>당신이 코틀린으로 프로그래밍 하기 시작했다면 더 이상 자바를 쓰기 싫어질 것이다. (이거 레알!)</li><li>코틀린은 성능이나 안정성의 희생 없이도 자바보다 좀 더 간결하고 이해하기 쉬운 코드를 만들도록 해준다.</li><li>코틀린은 생산성을 높여주고 당신을 중장기적으로 좀 더 나은 개발자로 만들어 줄 것이다.</li></ul></li></ul><h5 id="코틀린-사용하기"><a href="#코틀린-사용하기" class="headerlink" title="코틀린 사용하기"></a>코틀린 사용하기</h5><p><a href="https://kotlinlang.org/docs/reference/basic-syntax.html" target="_blank" rel="noopener">코틀린 공식 홈페이지</a> 에서 가볍게 돌려봐도 되고, jdk 1.8 설치 후 InteliJ Community 버전으로 설치하면 된다. 안드로이드 스튜디오의 경우에는 3 이상 버전부터 코틀린이 기본적으로 탑재되어있고, 이전 버전은 코틀린 플러그인을 설치하기만 하면 된다.</p><p>출처 : 새차원의 코틀린 강좌 <a href="https://www.inflearn.com/course/%EC%BD%94%ED%8B%80%EB%A6%B0-%EA%B0%95%EC%A2%8C-%EC%83%88%EC%B0%A8%EC%9B%90/" target="_blank" rel="noopener">https://www.inflearn.com/course/%EC%BD%94%ED%8B%80%EB%A6%B0-%EA%B0%95%EC%A2%8C-%EC%83%88%EC%B0%A8%EC%9B%90/</a></p>]]></content>
       
+      
+      <categories>
+          
+          <category> Language </category>
+          
+          <category> 강의정리노트 </category>
+          
+      </categories>
       
       
         <tags>
             
-            <tag> test </tag>
+            <tag> kotlin </tag>
             
         </tags>
       
