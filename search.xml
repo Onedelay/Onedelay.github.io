@@ -3,6 +3,23 @@
   
     
     <entry>
+      <title>test</title>
+      <link href="/2018/10/26/test/"/>
+      <url>/2018/10/26/test/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-테스트"><a href="#1-테스트" class="headerlink" title="1. 테스트"></a>1. 테스트</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"hello world!"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>마크다운 잘 먹히나 한번 보자</strong></p><p>참고 블로그는 여기</p><p><a href="https://wonheesoo.github.io/2018/01/13/Hexo-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-2-%EC%84%A4%EC%A0%95-%ED%85%8C%EB%A7%88/" target="_blank" rel="noopener">https://wonheesoo.github.io/2018/01/13/Hexo-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-2-%EC%84%A4%EC%A0%95-%ED%85%8C%EB%A7%88/</a></p><blockquote><p>이거 은근 귀찮은 작업이구만? 게다가 중국어 투성이라 뽝취뉍</p></blockquote>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> test </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2018/10/26/hello-world/"/>
       <url>/2018/10/26/hello-world/</url>
