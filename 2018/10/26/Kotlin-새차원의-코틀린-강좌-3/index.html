@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>[Kotlin] 새차원의 코틀린 강좌(3) | Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="kotlin">
+    
+    <meta name="description" content="새차원의 코틀린 강좌 - Basic Type 기본 타입 코틀린에서 모든 것은 객체임 (자바의 경우는 primitive type과 구분) 모든 것에 멤버함수나 프로퍼티를 호출 가능하다는 의미에서…    숫자 자바의 숫자형과 거의 비슷하게 처리 코틀린에서 Number는 클래스임, java의 privitive type에 직접 접근할 수 없음 자바에서 숫자형이던">
+<meta name="keywords" content="kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Kotlin] 새차원의 코틀린 강좌(3)">
+<meta property="og:url" content="https://Onedelay.github.io/2018/10/26/Kotlin-새차원의-코틀린-강좌-3/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="새차원의 코틀린 강좌 - Basic Type 기본 타입 코틀린에서 모든 것은 객체임 (자바의 경우는 primitive type과 구분) 모든 것에 멤버함수나 프로퍼티를 호출 가능하다는 의미에서…    숫자 자바의 숫자형과 거의 비슷하게 처리 코틀린에서 Number는 클래스임, java의 privitive type에 직접 접근할 수 없음 자바에서 숫자형이던">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://t1.daumcdn.net/cfile/tistory/99ADD33F5BC178E025">
+<meta property="og:updated_time" content="2018-10-26T08:36:09.926Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Kotlin] 새차원의 코틀린 강좌(3)">
+<meta name="twitter:description" content="새차원의 코틀린 강좌 - Basic Type 기본 타입 코틀린에서 모든 것은 객체임 (자바의 경우는 primitive type과 구분) 모든 것에 멤버함수나 프로퍼티를 호출 가능하다는 의미에서…    숫자 자바의 숫자형과 거의 비슷하게 처리 코틀린에서 Number는 클래스임, java의 privitive type에 직접 접근할 수 없음 자바에서 숫자형이던">
+<meta name="twitter:image" content="https://t1.daumcdn.net/cfile/tistory/99ADD33F5BC178E025">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">공부한것들 정리하는 블로그</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Language/">Language</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Language/강의정리노트/">강의정리노트</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Language/">Language</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Language/강의정리노트/">강의정리노트</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="cat-Kotlin-새차원의-코틀린-강좌-3" class="article article-single article-type-cat" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        [Kotlin] 새차원의 코틀린 강좌(3)
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/10/26/Kotlin-새차원의-코틀린-강좌-3/" class="article-date">
+            <time datetime="2018-10-26T08:32:34.000Z" itemprop="datePublished">2018-10-26</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/kotlin/">kotlin</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="새차원의-코틀린-강좌-Basic-Type"><a href="#새차원의-코틀린-강좌-Basic-Type" class="headerlink" title="새차원의 코틀린 강좌 - Basic Type"></a>새차원의 코틀린 강좌 - Basic Type</h2><p><br></p>
+<h5 id="기본-타입"><a href="#기본-타입" class="headerlink" title="기본 타입"></a>기본 타입</h5><ul>
+<li>코틀린에서 <strong>모든 것은 객체</strong>임 (자바의 경우는 primitive type과 구분)</li>
+<li>모든 것에 멤버함수나 프로퍼티를 호출 가능하다는 의미에서…</li>
+</ul>
+<p><br></p>
+<p><br></p>
+<h5 id="숫자"><a href="#숫자" class="headerlink" title="숫자"></a>숫자</h5><ul>
+<li>자바의 숫자형과 거의 비슷하게 처리</li>
+<li>코틀린에서 Number는 클래스임, java의 privitive type에 직접 접근할 수 없음</li>
+<li>자바에서 숫자형이던 char가 코틀린에서는 숫자 형이 아님</li>
+</ul>
+<h5 id=""><a href="#" class="headerlink" title=""></a><img src="https://t1.daumcdn.net/cfile/tistory/99ADD33F5BC178E025" alt="img"></h5><p><br></p>
+<p><br></p>
+<h5 id="리터럴-Literal"><a href="#리터럴-Literal" class="headerlink" title="리터럴(Literal)"></a>리터럴(Literal)</h5><ul>
+<li>10진수 : 123 (Int, Short)</li>
+<li>Long : 123L</li>
+<li>Double : 123.5, 123.5e10</li>
+<li>Float : 123.5f</li>
+<li>2진수 : 0b00001011</li>
+<li>8진수 : 미지원 (Java는 지원 : int i = 017;)</li>
+<li>16진수 : 0X0F</li>
+</ul>
+<p><br></p>
+<p><br></p>
+<h5 id="Underscores-in-numeric-literals-since-1-1"><a href="#Underscores-in-numeric-literals-since-1-1" class="headerlink" title="Underscores in numeric literals (since 1.1)"></a>Underscores in numeric literals (since 1.1)</h5><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> oneMillion = <span class="number">1_000_000</span></span><br><span class="line"><span class="keyword">val</span> creditCardNumber = <span class="number">1234_5678_9012_3456L</span></span><br><span class="line"><span class="keyword">val</span> socialSecurityNumber = <span class="number">999_99_9999L</span></span><br><span class="line"><span class="keyword">val</span> hexBytes = <span class="number">0xFF_EC_DE_5E</span></span><br><span class="line"><span class="keyword">val</span> bytes = <span class="number">0b11010010_01101001_10010100_10010010</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><br></p>
+<h5 id="Representation"><a href="#Representation" class="headerlink" title="Representation"></a>Representation</h5><ul>
+<li>자바 플랫폼에서 숫자형은 JVM primitive type으로 저장됨</li>
+<li>Nullable이나 제네릭의 경우에는 박싱(Integer 클래스로 변환)됨</li>
+<li>박싱된 경우 identitiy를 유지 하지 않음</li>
+<li>코틀린 코드를 바이트 코드로 변환한 후 디컴파일하면 자바 코드를 확인할 수 있다.</li>
+<li>=== 연산 : 같은 객체인가 판별 (instanceof 메서드인가?)</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> a: <span class="built_in">Int</span> = <span class="number">10000</span></span><br><span class="line"><span class="keyword">val</span> b: <span class="built_in">Int</span> = <span class="number">10000</span></span><br><span class="line">println(<span class="string">"a === b <span class="subst">$&#123;a === b&#125;</span>"</span>) <span class="comment">// true</span></span><br><span class="line">println(<span class="string">"a == b <span class="subst">$&#123;a == b&#125;</span>"</span>)   <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> c: <span class="built_in">Int</span>? = <span class="number">10000</span></span><br><span class="line"><span class="keyword">val</span> d: <span class="built_in">Int</span> = <span class="number">10000</span></span><br><span class="line">println(<span class="string">"c === d <span class="subst">$&#123;c === d&#125;</span>"</span>) <span class="comment">// false</span></span><br><span class="line">println(<span class="string">"c == d <span class="subst">$&#123;c == d&#125;</span>"</span>)   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><br></p>
+<h5 id="Explicit-Conversions"><a href="#Explicit-Conversions" class="headerlink" title="Explicit Conversions"></a>Explicit Conversions</h5><ul>
+<li>작은 타입은 큰 타입의 하위 타입이 아님, 즉 작은 타입에서 큰 타입으로의 대입이 안됨</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> a: <span class="built_in">Int</span> = <span class="number">1</span>      <span class="comment">// A boxed Int</span></span><br><span class="line"><span class="keyword">val</span> b: <span class="built_in">Long</span> = a     <span class="comment">// 오류</span></span><br><span class="line"><span class="keyword">val</span> b: <span class="built_in">Long</span> = a.toLong()</span><br><span class="line">println(a == b)     <span class="comment">// 오류</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>명시적으로 변환을 해 주어야 함</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> i: <span class="built_in">Int</span> = b.toInt() <span class="comment">// OK</span></span><br></pre></td></tr></table></figure>
+<p>+ 직접 테스트해본 결과 작은 변수를 큰 변수로 캐스팅하려고 하면 오버플로우가 발생한다.</p>
+<p><br></p>
+<p><br></p>
+<h5 id="문자-Characters"><a href="#문자-Characters" class="headerlink" title="문자 (Characters)"></a>문자 (Characters)</h5><ul>
+<li>Char는 숫자로 취급 되지 않음</li>
+<li>자바는 아스키코드 값(unsigned int)으로 처리 됨</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">check1</span><span class="params">(c: <span class="type">Char</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (c == <span class="number">1</span>) &#123; &#125; <span class="comment">// error</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">check2</span><span class="params">(c: <span class="type">Char</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (c == <span class="string">'a'</span>) &#123; &#125; <span class="comment">// OK</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">    print(<span class="string">'0'</span>.toInt()) <span class="comment">// print 48</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><br></p>
+<h5 id="배열"><a href="#배열" class="headerlink" title="배열"></a>배열</h5><ul>
+<li>배열은 Array 클래스로 표현됨</li>
+<li>get, set ([] 연산자 오버로딩 가능)</li>
+<li>size 등 유용한 멤버 함수 포함</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array: Array&lt;String&gt; = arrayOf(<span class="string">"코틀린"</span>, <span class="string">"강좌"</span>)</span><br><span class="line">println(array.<span class="keyword">get</span>(<span class="number">0</span>))</span><br><span class="line">println(array[<span class="number">1</span>])</span><br><span class="line">println(array.size)</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><br></p>
+<h5 id="배열-생성"><a href="#배열-생성" class="headerlink" title="배열 생성"></a>배열 생성</h5><ol>
+<li>Array의 팩토리 함수 이용</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> a = Array(<span class="number">5</span>, &#123; i -&gt; i.toString() &#125;) <span class="comment">// i : 0 ~ 4</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>arrayOf() 등의 라이브러리 함수 이용</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> b = arrayOf(<span class="string">"0"</span>, <span class="string">"1"</span>, <span class="string">"2"</span>, <span class="string">"3"</span>, <span class="string">"4"</span>)</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><br></p>
+<h5 id="특별한-Array-클래스"><a href="#특별한-Array-클래스" class="headerlink" title="특별한 Array 클래스"></a>특별한 Array 클래스</h5><ul>
+<li>Primitive 타입의 박싱 오버헤드(제너릭이나 레퍼런스 타입으로 변환되는 것)를 없애기 위한 배열</li>
+<li>IntArray, ShortArray, LongArray, CharArray</li>
+<li>Array를 상속한 클래스들은 아니지만, Array와 같은 메소드와 프로퍼티를 가짐</li>
+<li>size 등 유용한 멤버 함수 포함</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> x: IntArray = intArrayOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">x[<span class="number">0</span>] = <span class="number">6</span></span><br><span class="line">println(x.<span class="keyword">get</span>(<span class="number">0</span>))</span><br><span class="line">println(x[<span class="number">0</span>])</span><br><span class="line">println(x.size)</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><br></p>
+<h5 id="문자열"><a href="#문자열" class="headerlink" title="문자열"></a>문자열</h5><ul>
+<li>문자열은 String 클래스로 표현</li>
+<li>String은 characters로 구성됨</li>
+<li>s[i] 와 같은 방식으로 접근 가능 (immutable 이므로 변경 불가)</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x: String = <span class="string">"Kotlin"</span></span><br><span class="line">println(x.<span class="keyword">get</span>(<span class="number">0</span>))</span><br><span class="line">println(x[<span class="number">0</span>])</span><br><span class="line">println(x.length)</span><br><span class="line"><span class="keyword">for</span> (c <span class="keyword">in</span> x) &#123; println(c) &#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><br></p>
+<h5 id="문자열-리터럴"><a href="#문자열-리터럴" class="headerlink" title="문자열 리터럴"></a>문자열 리터럴</h5><ul>
+<li>escaped string (“Kotlin”)<ul>
+<li>전통적인 방식으로 Java String과 거의 비슷</li>
+<li>Backslash를 사용하여 escaping 처리</li>
+</ul>
+</li>
+<li>raw string (“””Kotlin”””)<ul>
+<li>escaping 처리 필요 없음</li>
+<li>개행 이나 어떠한 문자 포함 가능</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> s1 = <span class="string">"Hello, world!\n"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> s2 = <span class="string">"""</span></span><br><span class="line"><span class="string">"'이것은 코틀린의</span></span><br><span class="line"><span class="string">raw String</span></span><br><span class="line"><span class="string">입니다.'"</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line">print(s1)</span><br><span class="line">print(s2)</span><br></pre></td></tr></table></figure>
+<p>“”” “”” 사이에 탭도 인식됨. 그래서 에디터 제일 왼쪽에 붙여야 원하는대로 나옴 (기존에 \사용했던 모든 것들 그냥 그대로 쓸 수 있다는 것!)</p>
+<p><br></p>
+<p>출처 : 새차원의 코틀린 강좌 <a href="https://www.inflearn.com/course/%EC%BD%94%ED%8B%80%EB%A6%B0-%EA%B0%95%EC%A2%8C-%EC%83%88%EC%B0%A8%EC%9B%90/" target="_blank" rel="noopener">https://www.inflearn.com/course/%EC%BD%94%ED%8B%80%EB%A6%B0-%EA%B0%95%EC%A2%8C-%EC%83%88%EC%B0%A8%EC%9B%90/</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://Onedelay.github.io/2018/10/26/Kotlin-새차원의-코틀린-강좌-3/" data-id="cjnprr6o30005h4vyn4e8wthz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/Onedelay" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/10/26/Kotlin-새차원의-코틀린-강좌-4/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            [Kotlin] 새차원의 코틀린 강좌(4)
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/10/26/Kotlin-새차원의-코틀린-강좌-2/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">[Kotlin] 새차원의 코틀린 강좌(2)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Language/">Language</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Language/강의정리노트/">강의정리노트</a><span class="category-list-count">4</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin/">kotlin</a><span class="tag-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Language/">Language</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Language/강의정리노트/">강의정리노트</a></p>
+                            <p class="item-title"><a href="/2018/10/26/Kotlin-새차원의-코틀린-강좌-4/" class="title">[Kotlin] 새차원의 코틀린 강좌(4)</a></p>
+                            <p class="item-date"><time datetime="2018-10-26T08:36:25.000Z" itemprop="datePublished">2018-10-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Language/">Language</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Language/강의정리노트/">강의정리노트</a></p>
+                            <p class="item-title"><a href="/2018/10/26/Kotlin-새차원의-코틀린-강좌-3/" class="title">[Kotlin] 새차원의 코틀린 강좌(3)</a></p>
+                            <p class="item-date"><time datetime="2018-10-26T08:32:34.000Z" itemprop="datePublished">2018-10-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Language/">Language</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Language/강의정리노트/">강의정리노트</a></p>
+                            <p class="item-title"><a href="/2018/10/26/Kotlin-새차원의-코틀린-강좌-2/" class="title">[Kotlin] 새차원의 코틀린 강좌(2)</a></p>
+                            <p class="item-date"><time datetime="2018-10-26T08:26:38.000Z" itemprop="datePublished">2018-10-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Language/">Language</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Language/강의정리노트/">강의정리노트</a></p>
+                            <p class="item-title"><a href="/2018/10/26/Kotlin-새차원의-코틀린-강좌-1/" class="title">[Kotlin] 새차원의 코틀린 강좌(1)</a></p>
+                            <p class="item-date"><time datetime="2018-10-26T08:20:02.000Z" itemprop="datePublished">2018-10-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/10/26/hello-world/" class="title">Hello World</a></p>
+                            <p class="item-date"><time datetime="2018-10-26T03:39:57.806Z" itemprop="datePublished">2018-10-26</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 Onedelay</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://Onedelay.github.io/2018/10/26/Kotlin-새차원의-코틀린-강좌-3/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
