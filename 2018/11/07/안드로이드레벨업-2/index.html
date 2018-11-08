@@ -20,12 +20,12 @@
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="출처 : 안드로이드 개발 레벨업 교과서 41~50p 몰랐던 부분 정리하는 포스트!  커스텀 뷰 만들기1. 뷰를 이해하자 뷰란 UI를 구성하는 바탕이 되는 컴포넌트로서 네모난 그리기 영역을 가진다 패딩으로 지정된 간격은 배경색으로 칠해지고, 마진으로 지정된 간격은 공백이 된다. 패딩은 뷰 크기에 포함되지만, 마진은 포함되지 않는다.   2. 커스텀 뷰 만들">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://onedelay.github.io/images/커스텀뷰만들기_캡쳐화면.jpg">
-<meta property="og:updated_time" content="2018-11-08T05:35:38.607Z">
+<meta property="og:image" content="https://onedelay.github.io/2018/11/07/images/커스텀뷰만들기_캡쳐화면.jpg">
+<meta property="og:updated_time" content="2018-11-08T09:21:09.518Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Android] 안드로이드 개발 레벨업 교과서 정리 #2 커스텀뷰">
 <meta name="twitter:description" content="출처 : 안드로이드 개발 레벨업 교과서 41~50p 몰랐던 부분 정리하는 포스트!  커스텀 뷰 만들기1. 뷰를 이해하자 뷰란 UI를 구성하는 바탕이 되는 컴포넌트로서 네모난 그리기 영역을 가진다 패딩으로 지정된 간격은 배경색으로 칠해지고, 마진으로 지정된 간격은 공백이 된다. 패딩은 뷰 크기에 포함되지만, 마진은 포함되지 않는다.   2. 커스텀 뷰 만들">
-<meta name="twitter:image" content="https://onedelay.github.io/images/커스텀뷰만들기_캡쳐화면.jpg">
+<meta name="twitter:image" content="https://onedelay.github.io/2018/11/07/images/커스텀뷰만들기_캡쳐화면.jpg">
     
 
     
@@ -231,7 +231,7 @@
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> : <span class="type">AppCompatActivity</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        setContentView(R.layout.activity_main)</span><br><span class="line"></span><br><span class="line">        button.setOnClickListener &#123;</span><br><span class="line">            indicator.setSelected((indicator.mSelected + <span class="number">1</span>) % <span class="number">5</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><br></p>
 <p>결과화면</p>
-<p><img src="/images/커스텀뷰만들기_캡쳐화면.jpg" alt=""></p>
+<p><img src="../images/커스텀뷰만들기_캡쳐화면.jpg" alt=""></p>
 
         </div>
         <footer class="article-footer">
@@ -239,7 +239,7 @@
 
 
 
-    <a data-url="https://Onedelay.github.io/2018/11/07/안드로이드레벨업-2/" data-id="cjo85sghm0007dwvy2ybgrtvp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://Onedelay.github.io/2018/11/07/안드로이드레벨업-2/" data-id="cjo8j2xg2000sxgvyl1r7px0h" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -337,6 +337,16 @@
         
 <nav id="article-nav">
     
+        <a href="/2018/11/08/안드로이드레벨업-3/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            [Android] 안드로이드 개발 레벨업 교과서 정리 #3 리사이클러뷰(1)
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
     
         <a href="/2018/11/07/안드로이드레벨업-1/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
@@ -357,7 +367,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/Concepts/">Concepts</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Language/">Language</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Language/강의정리노트/">강의정리노트</a><span class="category-list-count">8</span></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/Concepts/">Concepts</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Language/">Language</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Language/강의정리노트/">강의정리노트</a><span class="category-list-count">8</span></li></ul></li></ul>
         </div>
     </div>
 
@@ -367,7 +377,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin/">kotlin</a><span class="tag-list-count">8</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin/">kotlin</a><span class="tag-list-count">9</span></li></ul>
         </div>
     </div>
 
@@ -378,6 +388,15 @@
         <h3 class="widget-title">recents</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Android/Concepts/">Concepts</a></p>
+                            <p class="item-title"><a href="/2018/11/08/안드로이드레벨업-3/" class="title">[Android] 안드로이드 개발 레벨업 교과서 정리 #3 리사이클러뷰(1)</a></p>
+                            <p class="item-date"><time datetime="2018-11-08T08:40:12.000Z" itemprop="datePublished">2018-11-08</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -415,15 +434,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Language/">Language</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Language/강의정리노트/">강의정리노트</a></p>
-                            <p class="item-title"><a href="/2018/10/26/Kotlin-새차원의-코틀린-강좌-6/" class="title">[Kotlin] 새차원의 코틀린 강좌(6)</a></p>
-                            <p class="item-date"><time datetime="2018-10-26T08:56:56.000Z" itemprop="datePublished">2018-10-26</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -433,7 +443,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">9</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">9</span></li></ul>
         </div>
     </div>
 
