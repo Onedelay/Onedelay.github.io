@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>[Android] 안드로이드 개발 레벨업 교과서 정리 #4 리사이클러뷰(2) | Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="kotlin,android,recyclerview">
+    
+    <meta name="description" content="출처 : 안드로이드 개발 레벨업 교과서 120~128p 몰랐던 부분 정리하는 포스트!  1. GridLayoutManagerRecyclerView에는 GridLayoutManager 라는 격자 형태로 레이아웃을 표시하는 LayoutManager 가 있다. 간단한 그리드형태가 아닌, GridLayoutManager.SpanSizeLookup을 이용하여 스크">
+<meta name="keywords" content="kotlin,android,recyclerview">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Android] 안드로이드 개발 레벨업 교과서 정리 #4 리사이클러뷰(2)">
+<meta property="og:url" content="https://Onedelay.github.io/2018/11/13/안드로이드레벨업-4/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="출처 : 안드로이드 개발 레벨업 교과서 120~128p 몰랐던 부분 정리하는 포스트!  1. GridLayoutManagerRecyclerView에는 GridLayoutManager 라는 격자 형태로 레이아웃을 표시하는 LayoutManager 가 있다. 간단한 그리드형태가 아닌, GridLayoutManager.SpanSizeLookup을 이용하여 스크">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://onedelay.github.io/2018/11/13/images/4_recycler_grid.png">
+<meta property="og:updated_time" content="2018-11-13T07:05:51.685Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Android] 안드로이드 개발 레벨업 교과서 정리 #4 리사이클러뷰(2)">
+<meta name="twitter:description" content="출처 : 안드로이드 개발 레벨업 교과서 120~128p 몰랐던 부분 정리하는 포스트!  1. GridLayoutManagerRecyclerView에는 GridLayoutManager 라는 격자 형태로 레이아웃을 표시하는 LayoutManager 가 있다. 간단한 그리드형태가 아닌, GridLayoutManager.SpanSizeLookup을 이용하여 스크">
+<meta name="twitter:image" content="https://onedelay.github.io/2018/11/13/images/4_recycler_grid.png">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">공부한것들 정리하는 블로그</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/Concepts/">Concepts</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Language/">Language</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Language/강의정리노트/">강의정리노트</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Android/">Android</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Android/Concepts/">Concepts</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="cat-안드로이드레벨업-4" class="article article-single article-type-cat" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        [Android] 안드로이드 개발 레벨업 교과서 정리 #4 리사이클러뷰(2)
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/11/13/안드로이드레벨업-4/" class="article-date">
+            <time datetime="2018-11-13T02:55:01.000Z" itemprop="datePublished">2018-11-13</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/kotlin/">kotlin</a>, <a class="tag-link" href="/tags/recyclerview/">recyclerview</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><br></p>
+<p><em>출처 : 안드로이드 개발 레벨업 교과서 120~128p</em></p>
+<p>몰랐던 부분 정리하는 포스트!</p>
+<p><br></p>
+<h4 id="1-GridLayoutManager"><a href="#1-GridLayoutManager" class="headerlink" title="1. GridLayoutManager"></a>1. GridLayoutManager</h4><p>RecyclerView에는 GridLayoutManager 라는 격자 형태로 레이아웃을 표시하는 LayoutManager 가 있다. 간단한 그리드형태가 아닌, <code>GridLayoutManager.SpanSizeLookup</code>을 이용하여 스크린샷과 같이 응용할 수 있다.</p>
+<p><img src="../images/4_recycler_grid.png" alt=""></p>
+<p><br></p>
+<p><a href="https://github.com/wikibook/advanced-android-book/tree/master/tech04/RecyclerViewSamples/app/src/main/java/com/github/advanced_android/recyclerviewsamples/grid" target="_blank" rel="noopener">앞으로 설명할 예제 소스(Java)</a></p>
+<p><br></p>
+<p><code>GridLayoutManager.SpanSizeLookup</code>에서는 <code>getSpanSize()</code> 메서드가 호출되므로 독점하고 싶은 열의 개수를 반환한다. 헤더 요소에서는 3열을 모두 차지하고 콘텐츠 요소에서는 1열을 차지하게 한다. 이때 헤더 요소인지 아닌지는 <code>Adapter.getItemViewType()</code> 메서드를 이용한다. 이 메서드가 헤더 요소인지 일반 아이템 요소인지 판단할 수 있는 값(Int)을 반환한다. 헤더 요소일 경우 <code>getSpanSize()</code>의 반환값으로서 이번에 독점하고 싶은 열의 수인 3을 반환하도록 구현하면 된다.</p>
+<p>단, 이번에는 나중의 열의 수가 바뀔 것을 고려해 전체 열의 수인 3을 얻을 수 있는(레이아웃 매니저 생성자로 넘겼던 값) <code>GridLayoutManager.getSpanCount()</code> 메서드를 이용한다. 헤더가 아닐 경우 일반 아이템 요소이므로 1칸만 사용하도록 1을 반환한다.</p>
+<p>SpanSizeLoopup 인스턴스를 위에서 생성했으면 <code>GridLayoutManager</code>에 <code>SpanSizeLookup</code>을 설정하고, RecyclerView에 레이아웃 매니저를 설정한다.</p>
+<p>위에 링크된 책의 예제는 Java로 작성되었지만, 직접 kotlin으로 바꿔서 코드를 작성해보았다. </p>
+<p>xml은 동일하기 때문에, 첨부하지 않는다.</p>
+<p><br></p>
+<h5 id="ViewHolder-kt"><a href="#ViewHolder-kt" class="headerlink" title="ViewHolder.kt"></a>ViewHolder.kt</h5><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HeaderViewHolder</span> <span class="keyword">private</span> <span class="keyword">constructor</span></span>(itemView: View) : RecyclerView.ViewHolder(itemView) &#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">create</span><span class="params">(parent: <span class="type">ViewGroup</span>)</span></span> =</span><br><span class="line">        HeaderViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.viewholder_header, parent, <span class="literal">false</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">bind</span><span class="params">(text: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        itemView.title_text_view.text = <span class="string">"시리즈 : <span class="variable">$text</span>"</span> <span class="comment">// 이 친구는 스트링 리소스를 어떻게 분리할지 모르겠다.</span></span><br><span class="line">        itemView.detail_text_view.text = <span class="string">"<span class="variable">$text</span> 시리즈입니다"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ItemViewHolder</span> <span class="keyword">private</span> <span class="keyword">constructor</span></span>(itemView: View) : RecyclerView.ViewHolder(itemView) &#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">create</span><span class="params">(parent: <span class="type">ViewGroup</span>)</span></span> =</span><br><span class="line">                ItemViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.viewholder_item, parent, <span class="literal">false</span>))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">bind</span><span class="params">(text: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        itemView.simple_text_view.text = text</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="RichAdapter-kt"><a href="#RichAdapter-kt" class="headerlink" title="RichAdapter.kt"></a>RichAdapter.kt</h5><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RichAdapter</span> : <span class="type">RecyclerView.Adapter</span>&lt;<span class="type">RecyclerView.ViewHolder</span>&gt;</span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> dataSet = ArrayList&lt;String&gt;()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">val</span> ITEM_VIEW_TYPE = <span class="number">0</span></span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">val</span> HEADER_VIEW_TYPE = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">setItems</span><span class="params">(<span class="keyword">data</span>: <span class="type">List</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">        dataSet.clear()</span><br><span class="line">        dataSet.addAll(<span class="keyword">data</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateViewHolder</span><span class="params">(parent: <span class="type">ViewGroup</span>, viewType: <span class="type">Int</span>)</span></span>: RecyclerView.ViewHolder &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">when</span> (viewType) &#123;</span><br><span class="line">            HEADER_VIEW_TYPE -&gt; HeaderViewHolder.create(parent)</span><br><span class="line">            ITEM_VIEW_TYPE -&gt; ItemViewHolder.create(parent)</span><br><span class="line">            <span class="keyword">else</span> -&gt; <span class="keyword">throw</span> RuntimeException(<span class="string">"예측되지 않는 viewType 입니다"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getItemCount</span><span class="params">()</span></span> = dataSet.size</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 네모로 시작할 경우 헤더로 판정</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getItemViewType</span><span class="params">(position: <span class="type">Int</span>)</span></span> = <span class="keyword">if</span> (dataSet[position].startsWith(<span class="string">"■"</span>)) &#123;</span><br><span class="line">        HEADER_VIEW_TYPE</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        ITEM_VIEW_TYPE</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onBindViewHolder</span><span class="params">(holder: <span class="type">RecyclerView</span>.<span class="type">ViewHolder</span>, position: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">val</span> text = dataSet[position]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (holder <span class="keyword">is</span> ItemViewHolder) holder.bind(text)</span><br><span class="line">        <span class="keyword">else</span> (holder <span class="keyword">as</span>? HeaderViewHolder)?.bind(text)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h5 id="액티비티에-추가할-코드"><a href="#액티비티에-추가할-코드" class="headerlink" title="액티비티에 추가할 코드"></a>액티비티에 추가할 코드</h5><p>아래 함수를 <code>onCreate()</code> 에서 사용하면 된다.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">setupRecyclerView</span><span class="params">()</span></span> &#123;</span><br><span class="line">        simple_recycler_view.setHasFixedSize(<span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">val</span> adapter = RichAdapter()</span><br><span class="line">        adapter.setItems(DummyDataGenerator.generateStringListData())</span><br><span class="line"></span><br><span class="line">        simple_recycler_view.adapter = adapter</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 열을 3으로 설정한 GridLayoutManager 의 인스턴스를 생성하고 설정</span></span><br><span class="line">        <span class="keyword">val</span> gridLayoutManager = GridLayoutManager(<span class="keyword">this</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// SpanSizeLookup 으로 위치별로 차지할 폭을 결정한다</span></span><br><span class="line">        gridLayoutManager.spanSizeLookup = <span class="keyword">object</span> : SpanSizeLookup() &#123;</span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getSpanSize</span><span class="params">(position: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">                <span class="comment">// 헤더는 3칸을 차지해서 표시</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">if</span> (adapter.getItemViewType(position) == RichAdapter.HEADER_VIEW_TYPE) &#123;</span><br><span class="line">                    gridLayoutManager.spanCount</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="number">1</span> <span class="comment">// 나머지는 1칸만 사용</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        simple_recycler_view.layoutManager = gridLayoutManager</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><br></p>
+<h4 id="2-아이템-추가-및-삭제"><a href="#2-아이템-추가-및-삭제" class="headerlink" title="2. 아이템 추가 및 삭제"></a>2. 아이템 추가 및 삭제</h4><p>우선 <code>RecyclerView</code>의 <code>Adapter</code>  클래스에서 아래 메서드를 추가한다. 이러한 메서드를 호출함으로써 데이터를 추가하고 삭제할 수 있다. 실제로 <code>Adapter</code>에서 이용하는 데이터를 변경하고 나서 <code>RecyclerView.Adapter</code> 클래스의 <code>notifyItemInserted(position)</code> 메서드와 <code>notifyItemRemoved(position)</code> 메서드 등을 호출해 <code>RecyclerView</code>에 변경을 알려줄 수 있고, 애니메이션이 실행된다.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 데이터 삽입</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">addAtPosition</span><span class="params">(position: <span class="type">Int</span>, text: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (position &gt; dataSet.size) &#123;</span><br><span class="line">        <span class="comment">// 현재 아이템의 수보다 많은 위치를 지정하므로, 마지막 위치에 추가</span></span><br><span class="line">        position = dataset.size</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 데이터 추가</span></span><br><span class="line">    dataSet.add(position, text)</span><br><span class="line">    <span class="comment">// 삽입했다고 Adapter에 알린다</span></span><br><span class="line">    notifyItemInserted(position)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 데이터 삭제</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">removeAtPosition</span><span class="params">(position: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (position &lt; dataSet.size) &#123;</span><br><span class="line">        <span class="comment">// 데이터 삭제</span></span><br><span class="line">        dataSet.remove(position)</span><br><span class="line">        <span class="comment">// 삭제했다고 Adapter에 알린다</span></span><br><span class="line">        notifyItemRemoved(position)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 데이터 이동</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">move</span><span class="params">(from: <span class="type">Int</span>, to: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> text = dataSet[from]</span><br><span class="line">    dataSet.remove(from)</span><br><span class="line">    dataSet.add(to, text)</span><br><span class="line">    notifyItemMoved(from, to)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이 외에도 notify 해주는 많은 메소드가 있다.</p>
+<ul>
+<li><a href="https://developer.android.com/reference/android/support/v7/widget/RecyclerView.Adapter.html#notifyItemChanged(int" target="_blank" rel="noopener">notifyItemChanged(int)</a>)</li>
+<li><a href="https://developer.android.com/reference/android/support/v7/widget/RecyclerView.Adapter#notifyItemRangeChanged(int,%20int" target="_blank" rel="noopener">notifyItemRangeChanged(int, int)</a>)</li>
+<li><a href="https://developer.android.com/reference/android/support/v7/widget/RecyclerView.Adapter#notifyItemRangeInserted(int,%20int" target="_blank" rel="noopener">notifyItemRangeInserted(int, int)</a>)</li>
+<li><a href="https://developer.android.com/reference/android/support/v7/widget/RecyclerView.Adapter#notifyItemRangeRemoved(int,%20int" target="_blank" rel="noopener">notifyItemRangeRemoved(int, int)</a>)</li>
+</ul>
+<p><br></p>
+<p><br></p>
+<h4 id="3-풍부한-조작-구현하기"><a href="#3-풍부한-조작-구현하기" class="headerlink" title="3. 풍부한 조작 구현하기"></a>3. 풍부한 조작 구현하기</h4><p><code>RecyclerView</code> 초기화 처리에서 <code>ItemTouchHelper</code> 클래스를 이용하면 <strong>밀어서 삭제</strong>하거나 <strong>데이터 이동</strong>을 할 수 있다. 이 클래스를 구현함으로써 드래그 앤 드롭이나, 스와이프 삭제가 가능해진다.</p>
+<p>구현은 매우 간단해서 <code>ItemTouchHelper</code>의 생성자로 <code>ItemTouchHelper.SimpleCallback</code>을 구현한 인스턴스를 전달하기만 하면 된다<a href="https://developer.android.com/reference/android/support/v7/widget/helper/ItemTouchHelper.SimpleCallback" target="_blank" rel="noopener">참고</a>. 첫 번째 파라미터로는 <code>onMove()</code>에서 드래그할 방향을 전달하고, 두 번째 파라미터로는 <code>onSwiped()</code>메서드로 아이템을 스와이프했을 때의 처리를 기술한다. 기본적으로는 조금 전에 정의한 Adapter의 메서드를 호출하는 것만으로도 쉽게 구현할 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ItemTouchHelper 클래스를 구현한다</span></span><br><span class="line"><span class="comment">// 이에따라 드래그 앤 드롭이나 스와이프로 삭제 등을 할 수 있게된다.</span></span><br><span class="line"><span class="keyword">new</span> ItemTouchHelper(<span class="keyword">new</span> ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP | ItemTouchHelper.DOWN, ItemTouchHelper.RIGHT)) &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onMove</span><span class="params">(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 드래그 앤 드롭 시</span></span><br><span class="line">        adapter.move(viewHolder.getAdapterPosition(), target.getAdapterPosition());</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSwiped</span><span class="params">(RecyclerView.ViewHolder viewHolder, <span class="keyword">int</span> direction)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 아이템 스와이프 시</span></span><br><span class="line">        adapter.removeAtPosition(viewHolder.getAdapterPosition());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).attachToRecyclerView(recyclerView);</span><br></pre></td></tr></table></figure>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://Onedelay.github.io/2018/11/13/안드로이드레벨업-4/" data-id="cjofe86td000ujwvygn970vcl" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/Onedelay" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/11/08/안드로이드레벨업-3/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">[Android] 안드로이드 개발 레벨업 교과서 정리 #3 리사이클러뷰(1)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/Concepts/">Concepts</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Language/">Language</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Language/강의정리노트/">강의정리노트</a><span class="category-list-count">8</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin/">kotlin</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recyclerview/">recyclerview</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Android/Concepts/">Concepts</a></p>
+                            <p class="item-title"><a href="/2018/11/13/안드로이드레벨업-4/" class="title">[Android] 안드로이드 개발 레벨업 교과서 정리 #4 리사이클러뷰(2)</a></p>
+                            <p class="item-date"><time datetime="2018-11-13T02:55:01.000Z" itemprop="datePublished">2018-11-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Android/Concepts/">Concepts</a></p>
+                            <p class="item-title"><a href="/2018/11/08/안드로이드레벨업-3/" class="title">[Android] 안드로이드 개발 레벨업 교과서 정리 #3 리사이클러뷰(1)</a></p>
+                            <p class="item-date"><time datetime="2018-11-08T08:40:12.000Z" itemprop="datePublished">2018-11-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Android/Concepts/">Concepts</a></p>
+                            <p class="item-title"><a href="/2018/11/07/안드로이드레벨업-2/" class="title">[Android] 안드로이드 개발 레벨업 교과서 정리 #2 커스텀뷰</a></p>
+                            <p class="item-date"><time datetime="2018-11-07T06:57:05.000Z" itemprop="datePublished">2018-11-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Android/Concepts/">Concepts</a></p>
+                            <p class="item-title"><a href="/2018/11/07/안드로이드레벨업-1/" class="title">[Android] 안드로이드 개발 레벨업 교과서 정리 #1 액티비티</a></p>
+                            <p class="item-date"><time datetime="2018-11-07T06:12:46.000Z" itemprop="datePublished">2018-11-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Language/">Language</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Language/강의정리노트/">강의정리노트</a></p>
+                            <p class="item-title"><a href="/2018/10/26/Kotlin-새차원의-코틀린-강좌-8/" class="title">[Kotlin] 새차원의 코틀린 강좌(8)</a></p>
+                            <p class="item-date"><time datetime="2018-10-26T09:02:54.000Z" itemprop="datePublished">2018-10-26</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">9</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/android/" style="font-size: 15px;">android</a> <a href="/tags/kotlin/" style="font-size: 20px;">kotlin</a> <a href="/tags/recyclerview/" style="font-size: 10px;">recyclerview</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 Onedelay</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://Onedelay.github.io/2018/11/13/안드로이드레벨업-4/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
