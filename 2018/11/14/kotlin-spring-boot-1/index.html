@@ -21,7 +21,7 @@
 <meta property="og:description" content="Building web applications with Spring Boot and Kotlinkotlin 으로 간단한 웹서버 구현해보고싶어서 kotlin spring boot 기본 예제를 따라해보려했는데, 온통 영어에다가 장애물이 너무 많았어서 (이건 단순히 영어 해석이 안돼서였다…) 까먹을까봐 정리하는 것이다.  참고 : https://spring.io">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://github.com/spring-guides/tut-spring-boot-kotlin/raw/master/images/initializr.png">
-<meta property="og:updated_time" content="2018-11-14T07:55:09.074Z">
+<meta property="og:updated_time" content="2018-11-14T08:00:20.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="웹 서버 만들기 with Kotlin and Spring Boot">
 <meta name="twitter:description" content="Building web applications with Spring Boot and Kotlinkotlin 으로 간단한 웹서버 구현해보고싶어서 kotlin spring boot 기본 예제를 따라해보려했는데, 온통 영어에다가 장애물이 너무 많았어서 (이건 단순히 영어 해석이 안돼서였다…) 까먹을까봐 정리하는 것이다.  참고 : https://spring.io">
@@ -240,8 +240,7 @@
 <p>그러나 .mustache 확장자를 인식할 수 없는 문제점이 발생하는데, 추가적으로 plugin을 설치하면 된다.</p>
 <p><strong>File -&gt; Settings -&gt; Plugins -&gt; mustache</strong> 검색 후 나오는거 설치하고 재시작 하면 끝! (처음에 검색결과 없다고 뜨는데, Search in repositories 누르면 나온다.)</p>
 <p>그리고 <strong>Settings -&gt; File Types</strong> 가서 아래와 같이 추가해주면 된다. (귀찮아서 공홈 캡쳐)</p>
-<p align="center"><img src="/images/ETC/1_1.png"></p>
-
+<p><img src="/images/ETC/1_1.png" alt=""></p>
 <p><br></p>
 <p><code>src/main/resources/templates/header.mustache</code></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>&#123;&#123;title&#125;&#125;<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -251,8 +250,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;&gt; header&#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;title&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;&#123;&gt; footer&#125;&#125;</span><br></pre></td></tr></table></figure>
 <p><br></p>
 <p><code>BlogApplication.kt</code>의 main 함수를 실행해서 웹 응용 프로그램을 시작하고 <a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a> 를 띄우면 작성한 헤드 라인이있는 웹 페이지가 나타난다.</p>
-<p align="center"><img src="/images/ETC/1_2.png"></p>
-
+<p><img src="/images/ETC/1_2.png" alt=""></p>
 <p><br></p>
 <p>이제 더 살을 붙여보고 클라우드 서버에 올리면 되는건가?!</p>
 <p>끝!</p>
