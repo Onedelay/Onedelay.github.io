@@ -21,7 +21,7 @@
 <meta property="og:description" content="Building web applications with Spring Boot and Kotlinkotlin 으로 간단한 웹서버 구현해보고싶어서 kotlin spring boot 기본 예제를 따라해보려했는데, 온통 영어에다가 장애물이 너무 많았어서 (이건 단순히 영어 해석이 안돼서였다…) 까먹을까봐 정리하는 것이다.  참고 : https://spring.io">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://github.com/spring-guides/tut-spring-boot-kotlin/raw/master/images/initializr.png">
-<meta property="og:updated_time" content="2018-11-14T08:06:11.766Z">
+<meta property="og:updated_time" content="2018-11-14T15:46:42.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="웹 서버 만들기 with Kotlin and Spring Boot">
 <meta name="twitter:description" content="Building web applications with Spring Boot and Kotlinkotlin 으로 간단한 웹서버 구현해보고싶어서 kotlin spring boot 기본 예제를 따라해보려했는데, 온통 영어에다가 장애물이 너무 많았어서 (이건 단순히 영어 해석이 안돼서였다…) 까먹을까봐 정리하는 것이다.  참고 : https://spring.io">
@@ -198,9 +198,12 @@
 <p>프로젝트를 import 하면 build, indexing 작업이 시작된다.</p>
 <p><strong>★ 중요</strong> : build.gradle 파일 열어서 위에 뜬거 해줘야되는데 기억이 안난다. sync 비스무리 한 거였는데…. 암튼 이걸 하면 다시한번 download, indexing이 시작된다. </p>
 <p>나는 처음에 안하고 무작정 시작했더니</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error:Kotlin: [Internal Error] java.lang.IllegalStateException: The provided plugin org.jetbrains.kotlin.scripting.compiler.plugin.ScriptingCompilerConfigurationComponentRegistrar is not compatible with this version of compiler</span><br></pre></td></tr></table></figure>
+<p>Error:Kotlin: [Internal Error] java.lang.IllegalStateException: The provided plugin org.jetbrains.kotlin.scripting.compiler.plugin.ScriptingCompilerConfigurationComponentRegistrar is not compatible with this version of compiler</p>
 <p>라는 어마무시한 오류가 뜨면서 빌드조차 되지 않았었다.</p>
-<p>(추가적으로 JVM? 을 1.8로 설정했던 것 같은데 이게 영향을 미치는진 모르겠다.)</p>
+<p><strong>[추가]</strong> 위 오류를 해결할 수 있는 방법은 아래와 같다. 프로젝트 다시 만들어봤더니 아래와 같이 설정 해야한다.</p>
+<p><img src="/images/ETC/1_3.PNG" alt=""></p>
+<p><strong>Project bytecode version 을 8로 바꿔야 한다!!!!!!!</strong></p>
+<p>(추가적으로 Kotlin compiler에서 target JVM 을 1.8로 설정했던 것 같은데 이게 영향을 미치는진 모르겠다.)</p>
 <p><br></p>
 <h3 id="2-생성된-프로젝트-이해하기"><a href="#2-생성된-프로젝트-이해하기" class="headerlink" title="2. 생성된 프로젝트 이해하기"></a>2. 생성된 프로젝트 이해하기</h3><p>이 부분이 다 영어라서 스킵하고 넘어갔는데, 아마 이 부분을 간과해서 삽질을 오래한게 아닌가 싶다..ㅠㅠ 사실 자세히 읽어보지 않았기 때문에, 그냥 번역기 돌려서 붙여놔야겠다. </p>
 <h4 id="Gradle-build"><a href="#Gradle-build" class="headerlink" title="Gradle build"></a>Gradle build</h4><h5 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h5><p>명백한 Kotlin Gradle 플러그인 외에도 기본 구성은 클래스 및 메소드를 자동으로 여는 kotlin-spring 플러그인을 선언합니다 (Java와 달리 Kotlin의 기본 한정자는 <code>final</code>입니다). 스프링 주석으로 주석을 달거나 메타 주석을 추가합니다. 예를 들어 CGLIB 프록시에 필요한 열린 한정자를 추가하지 않고도 <code>@Configuration</code> 또는 <code>@Transactional Bean</code>을 만들 수있는 경우 유용합니다.</p>
