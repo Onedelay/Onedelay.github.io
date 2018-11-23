@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>[Android] 안드로이드 개발 레벨업 교과서 정리 #6 다양한 설계 기법 - 기본 구현 | Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="kotlin,android">
+    
+    <meta name="description" content="출처 : 안드로이드 개발 레벨업 교과서 133~p  1. 어떤 앱을 만들까?이번에는 GitHub 웹서비스의 API를 이용하여 앱을 만들어볼 것이다. GitHub에는 새롭게 주목받는 오픈소스 프로젝트가 있다. 이러한 프로젝트의 리포지토리 리스트를 보여주는 앱을 만들어보자.   2. 화면 레이아웃과 기능을 이해하자각 화면의 기능을 살펴보자. 리포지토리 목록">
+<meta name="keywords" content="kotlin,android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Android] 안드로이드 개발 레벨업 교과서 정리 #6 다양한 설계 기법 - 기본 구현">
+<meta property="og:url" content="https://Onedelay.github.io/2018/11/23/안드로이드레벨업-6/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="출처 : 안드로이드 개발 레벨업 교과서 133~p  1. 어떤 앱을 만들까?이번에는 GitHub 웹서비스의 API를 이용하여 앱을 만들어볼 것이다. GitHub에는 새롭게 주목받는 오픈소스 프로젝트가 있다. 이러한 프로젝트의 리포지토리 리스트를 보여주는 앱을 만들어보자.   2. 화면 레이아웃과 기능을 이해하자각 화면의 기능을 살펴보자. 리포지토리 목록">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://onedelay.github.io/images/깃헙불러오기.png">
+<meta property="og:updated_time" content="2018-11-23T05:49:36.462Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Android] 안드로이드 개발 레벨업 교과서 정리 #6 다양한 설계 기법 - 기본 구현">
+<meta name="twitter:description" content="출처 : 안드로이드 개발 레벨업 교과서 133~p  1. 어떤 앱을 만들까?이번에는 GitHub 웹서비스의 API를 이용하여 앱을 만들어볼 것이다. GitHub에는 새롭게 주목받는 오픈소스 프로젝트가 있다. 이러한 프로젝트의 리포지토리 리스트를 보여주는 앱을 만들어보자.   2. 화면 레이아웃과 기능을 이해하자각 화면의 기능을 살펴보자. 리포지토리 목록">
+<meta name="twitter:image" content="https://onedelay.github.io/images/깃헙불러오기.png">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">공부한것들 정리하는 블로그</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/Concepts/">Concepts</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/CS/">CS</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/CS/자료구조/">자료구조</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ETC/">ETC</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Language/">Language</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Language/강의정리노트/">강의정리노트</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Android/">Android</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Android/Concepts/">Concepts</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="cat-안드로이드레벨업-6" class="article article-single article-type-cat" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        [Android] 안드로이드 개발 레벨업 교과서 정리 #6 다양한 설계 기법 - 기본 구현
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/11/23/안드로이드레벨업-6/" class="article-date">
+            <time datetime="2018-11-23T04:28:49.000Z" itemprop="datePublished">2018-11-23</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/kotlin/">kotlin</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><br></p>
+<p><em>출처 : 안드로이드 개발 레벨업 교과서 133~p</em></p>
+<p><br></p>
+<h3 id="1-어떤-앱을-만들까"><a href="#1-어떤-앱을-만들까" class="headerlink" title="1. 어떤 앱을 만들까?"></a>1. 어떤 앱을 만들까?</h3><p>이번에는 GitHub 웹서비스의 API를 이용하여 앱을 만들어볼 것이다. GitHub에는 새롭게 주목받는 오픈소스 프로젝트가 있다. 이러한 프로젝트의 리포지토리 리스트를 보여주는 앱을 만들어보자.</p>
+<p><img src="/images/깃헙불러오기.png" alt=""></p>
+<p><br></p>
+<h3 id="2-화면-레이아웃과-기능을-이해하자"><a href="#2-화면-레이아웃과-기능을-이해하자" class="headerlink" title="2. 화면 레이아웃과 기능을 이해하자"></a>2. 화면 레이아웃과 기능을 이해하자</h3><p>각 화면의 기능을 살펴보자.</p>
+<h4 id="리포지토리-목록-화면-RepositoryListActivity"><a href="#리포지토리-목록-화면-RepositoryListActivity" class="headerlink" title="리포지토리 목록 화면(RepositoryListActivity)"></a>리포지토리 목록 화면(RepositoryListActivity)</h4><p>리포지토리 목록 화면에는 다음과 같은 기능이 있다.</p>
+<ul>
+<li>깃허브의 API에 접근해 지정된 프로그래밍 언어의 프로젝트 리포지토리 목록을 가져온다.</li>
+<li>프로그래밍 언어는 변경할 수 있고, 변경되면 목록을 갱신한다.</li>
+<li>리포지토리 목록의 각 항목을 탭하면 상세 화면으로 이동한다.</li>
+</ul>
+<p><br></p>
+<h4 id="상세-화면-DetailActivity"><a href="#상세-화면-DetailActivity" class="headerlink" title="상세 화면(DetailActivity)"></a>상세 화면(DetailActivity)</h4><p>상세화면은 리포지토리 목록 화면에서 선택된 리포지토리의 데이터를 API로 가져와서 표시한다.</p>
+<p>프로필 사진이나 리포지토리 제목을 클릭하면 해당 리포지토리의 url을 웹 브라우저에 표시한다.</p>
+<p><br></p>
+<h3 id="3-구현-방법을-확인하자"><a href="#3-구현-방법을-확인하자" class="headerlink" title="3. 구현 방법을 확인하자"></a>3. 구현 방법을 확인하자</h3><p>전체 프로젝트 코드는 <a href="https://github.com/Onedelay/GithubRepo/tree/master/app_original" target="_blank" rel="noopener">https://github.com/Onedelay/GithubRepo/tree/master/app_original</a> 를 참고하면 된다. (기존 프로젝트는 자바로 작성되어있고, <a href="https://github.com/wikibook/advanced-android-book/tree/master/tech05/NewGitHubRepos/app-original" target="_blank" rel="noopener">여기</a>를 참고하면 된다.)</p>
+<p>한 프로젝트에 여러개의 모듈을 생성해서 개발할 수 있다고는 들어만봤는데, 책에서도 그렇게 구현되어있길래 한번 해봤다. 모듈 추가는 간단하게 File -&gt; New -&gt; New Module 로 생성할 수 있다. 처음 프로젝트를 생성할 때 app 모듈이 기본적으로 생성되어있고, MVP, MVVM 패턴 예제를 위한 2개의 모듈을 추가했다. 모듈의 이름은 생성 후 바꿔버렸고, Configuration에 있는 이름도 따로 바꿔주었다.</p>
+<p>모듈을 생성하고, edit configuration 에서 Name 을 바꾸면 구조는 이렇게 완성된다. 프로젝트 폴더를 확인해보면 각 모듈별로 폴더가 생성되어있는 것을 알 수 있다.</p>
+<p><img src="/images/깃헙불러오기_모듈.png" alt=""></p>
+<p><br></p>
+<h3 id="4-리포지토리-화면을-이해하자"><a href="#4-리포지토리-화면을-이해하자" class="headerlink" title="4. 리포지토리 화면을 이해하자"></a>4. 리포지토리 화면을 이해하자</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">RepositoryListActivity 에서 하는 일</span><br><span class="line">1. 뷰 초기화</span><br><span class="line">2. 리사이클러뷰 아이템 클릭 이벤트 구현</span><br><span class="line">3. 스피너 선택 이벤트 구현</span><br><span class="line">4. API 요청</span><br></pre></td></tr></table></figure>
+<p>전체적인 흐름은 다음과 같다.</p>
+<ol>
+<li>시작할 액티비티의 <code>onCreate()</code>에서 <code>setupViews()</code> 메서드를 호출한다. <code>setupViews()</code> 메서드 안에서 각 뷰의 초기화를 진행하며, 이 때 액티비티는 리스트 아이템의 클릭 이벤트를 받을 수 있도록 <code>RepositoryAdapter.OnRepositoryItemClickListener</code>를 <code>implements</code>한다. </li>
+<li><code>GitHubService</code>를 이용해 GitHub API에 접근하여 <code>RepositoryListActivity</code>가 데이터를 수신한다.</li>
+<li><code>RepositoryAdapter</code>에서 <code>RepositoryListActivity</code>로부터 데이터를 전달받아 리사이클러뷰에 표시한다.</li>
+</ol>
+<p><br></p>
+<p>아래 메서드는 뷰들을 초기화하는 과정이 포함되어있으며, <code>RepositoryListActivity</code>의 <code>onCreate()</code>메서드에서 호출한다.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">setupViews</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="comment">// 툴바 설정</span></span><br><span class="line">        setSupportActionBar(toolbar)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// RecyclerView</span></span><br><span class="line">        recycler_repos.layoutManager = LinearLayoutManager(<span class="keyword">this</span>)</span><br><span class="line">        recycler_repos.adapter = repositoryAdapter</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Spinner</span></span><br><span class="line">        <span class="keyword">val</span> adapter = ArrayAdapter&lt;String&gt;(<span class="keyword">this</span>, android.R.layout.simple_spinner_item)</span><br><span class="line">        adapter.addAll(<span class="string">"java"</span>, <span class="string">"kotlin"</span>, <span class="string">"objective-c"</span>, <span class="string">"swift"</span>, <span class="string">"groovy"</span>, <span class="string">"python"</span>, <span class="string">"ruby"</span>, <span class="string">"c"</span>)</span><br><span class="line">        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)</span><br><span class="line">        language_spinner.adapter = adapter</span><br><span class="line">        language_spinner.onItemSelectedListener = <span class="keyword">object</span> : AdapterView.OnItemSelectedListener &#123;</span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onNothingSelected</span><span class="params">(p0: <span class="type">AdapterView</span>&lt;*&gt;?)</span></span> &#123;</span><br><span class="line">                <span class="comment">// Do nothing</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onItemSelected</span><span class="params">(parent: <span class="type">AdapterView</span>&lt;*&gt;?, view: <span class="type">View</span>?, position: <span class="type">Int</span>, id: <span class="type">Long</span>)</span></span> &#123;</span><br><span class="line">                <span class="comment">// 선택시 뿐만 아니라 처음에도 호출 됨</span></span><br><span class="line">                <span class="keyword">val</span> language = language_spinner.getItemAtPosition(position) <span class="keyword">as</span> String</span><br><span class="line">                loadRepositories(language)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>스피너의 아이템 목록을 선택하면, <code>loadRepositories()</code> 메서드를 이용하여 리포지토리 목록을 요청한다. </p>
+<p><code>loadRepositories()</code> 메서드로 API에 접근하고, 리포지토리 목록 데이터를 가져온다. 이 메서드에 가장 핵심적인 로직이 포함되어있다. 처리 흐름은 다음과 같다.</p>
+<ol>
+<li>progress bar를 표시한다.</li>
+<li>1주일 전 날짜를 구한다.</li>
+<li>1주일 전 날짜와 <code>Spinner</code>로 선택한 프로그래밍 언어로 API에 접근한다.</li>
+<li>API의 응답 결과는 <code>onNext()</code>에서 수신한다.</li>
+<li>Progress bar를 숨긴다.</li>
+<li>어댑터에 데이터를 추가하고, <code>Recyclerview</code>를 갱신한다.</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 지난 1주일간 만들어진 라이브러리의 인기순으로 가져온다</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> language 가져올 프로그래밍 언어</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">loadRepositories</span><span class="params">(language: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    <span class="comment">// 로딩 중이므로 진행바 표시</span></span><br><span class="line">    progress_bar.visibility = View.VISIBLE</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 일주일전 날짜의 문자열</span></span><br><span class="line">    <span class="keyword">val</span> calendar = Calendar.getInstance()</span><br><span class="line">    calendar.add(Calendar.DAY_OF_MONTH, -<span class="number">7</span>)</span><br><span class="line">    <span class="keyword">val</span> text = android.text.format.DateFormat.format(<span class="string">"yyyy-MM-dd"</span>, calendar).toString()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 서버 요청</span></span><br><span class="line">    <span class="keyword">val</span> application = application <span class="keyword">as</span> GitHubReposApplication</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 지난 일주일간 생성되고 언어가 language 인 것을 요청한다</span></span><br><span class="line">    <span class="keyword">val</span> observable = application</span><br><span class="line">    .gitHubService</span><br><span class="line">    .listRepos(<span class="string">"language:<span class="variable">$language</span> created:&gt;<span class="variable">$text</span>"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// IO 스레드로 통신하고, 메인스레드에서 결과를 수신하도록 한다</span></span><br><span class="line">    observable.subscribeOn(Schedulers.io())</span><br><span class="line">    .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">    .subscribe(<span class="keyword">object</span> : Subscriber&lt;GitHubService.Companion.Repositories&gt;() &#123;</span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onNext</span><span class="params">(repositories: <span class="type">GitHubService</span>.<span class="type">Companion</span>.<span class="type">Repositories</span>?)</span></span> &#123;</span><br><span class="line">            <span class="comment">// 로딩이 끝났으므로 진행바를 표시하지 않는다</span></span><br><span class="line">            progress_bar.visibility = View.GONE</span><br><span class="line">            <span class="comment">// 가져온 아이템을 표시하고자 RecyclerView 에 아이템을 설정하고 갱신한다</span></span><br><span class="line">            repositoryAdapter.setItemsAndRefresh(repositories?.items ?: listOf())</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCompleted</span><span class="params">()</span></span> &#123;</span><br><span class="line">            <span class="comment">// Do nothing</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onError</span><span class="params">(e: <span class="type">Throwable</span>?)</span></span> &#123;</span><br><span class="line">            <span class="comment">// 통신 실패 시에 호출된다</span></span><br><span class="line">            <span class="comment">// 여기서는 스낵바를 표시한다(아래에 표시되는 바)</span></span><br><span class="line">            Snackbar.make(coordinator_layout, <span class="string">"읽어올 수 없습니다."</span>, Snackbar.LENGTH_LONG)</span><br><span class="line">            .setAction(<span class="string">"Action"</span>, <span class="literal">null</span>).show()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>RxJava 개념을 잘 모르지만, 비동기로 주고받을 때 처리 흐름과 스레드를 제어하기가 편리하다고 얼핏 들은 것 같다. (Rx없이도 CallBack 으로 편하게 구현할 수 있을 법 한데…. 그냥 예제를 따라봤다.)</p>
+<p><br></p>
+<hr>
+<h4 id="RxJava-깨알-정리-Observable-Utility-Operators"><a href="#RxJava-깨알-정리-Observable-Utility-Operators" class="headerlink" title="RxJava 깨알 정리 - Observable Utility Operators"></a>RxJava 깨알 정리 - Observable Utility Operators</h4><p>참고 : <a href="http://reactivex.io/documentation/operators.html" target="_blank" rel="noopener">http://reactivex.io/documentation/operators.html</a></p>
+<ul>
+<li><p><code>observeOn</code> : 옵저버가 어느 스케줄러 상에서 Observable을 관찰할지 명시한다</p>
+</li>
+<li><p><code>subscribeOn</code> : Observable을 구독할 때 사용할 스케줄러를 명시한다</p>
+</li>
+<li><code>subscribe</code> : Observable이 배출하는 항목과 알림을 기반으로 동작한다</li>
+</ul>
+<p>아무리 봐도 이해가 잘 안된다. RxJava는 나중에 열심히 공부하는 걸로…</p>
+<hr>
+<p><br></p>
+<p>다음으로 API에 접근할 인터페이스다. 모든 액티비티에서 서버 요청 인스턴스를 이용할 수 있도록, Application에서 초기화 할 것이다.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Retrofit 으로 Github API 를 이용하기 위한 클래스</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">GitHubService</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * GitHub 의 리포지토리 검색 결과를 가져온다</span></span><br><span class="line"><span class="comment">     * https://developer.github.com/v3/search/</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> query GitHub API 로 검색할 내용</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> API 액세스 결과 취득 후의 콜백으로서 SearchResponse 를 가져올 수 있는 RxJava 의 Observable 로 반환</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GET(<span class="meta-string">"search/repositories?sort=stars&amp;order=desc"</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">listRepos</span><span class="params">(<span class="meta">@Query(<span class="meta-string">"q"</span>)</span> query: <span class="type">String</span>)</span></span>: Observable&lt;Repositories&gt;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 리포지토리 상세 내역을 가져온다</span></span><br><span class="line"><span class="comment">     * https://developer.github.com/v3/repos/#get</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> API 액세스 결과 취득 후의 콜백으로서 RepositoryItem 을 가져올 수 있는 RxJava 의 Observable 로 반환</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GET(<span class="meta-string">"repos/&#123;repoOwner&#125;/&#123;repoName&#125;"</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">detailRepo</span><span class="params">(<span class="meta">@Path(value = <span class="meta-string">"repoOwner"</span>)</span> owner: <span class="type">String</span>, <span class="meta">@Path(value = <span class="meta-string">"repoName"</span>)</span> repoName: <span class="type">String</span>)</span></span>: Observable&lt;RepositoryItem&gt;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * API 액세스 결과가 이 클래스에 들어온다</span></span><br><span class="line"><span class="comment">         * Github 의 리포지토리 목록이 들어와있다.</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@see</span> GitHubService#listRepos(String)</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Repositories</span></span>(<span class="keyword">val</span> items: List&lt;RepositoryItem&gt;)</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * API 액세스 결과가 이 클래스에 들어온다</span></span><br><span class="line"><span class="comment">         * GitHub 의 리포지토리 데이터가 들어와 있다</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@see</span> GitHubService#detailRepo(String, String)</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">RepositoryItem</span></span>(</span><br><span class="line">            <span class="keyword">val</span> description: String,</span><br><span class="line">            <span class="keyword">val</span> owner: Owner,</span><br><span class="line">            <span class="keyword">val</span> language: String,</span><br><span class="line">            <span class="keyword">val</span> name: String,</span><br><span class="line">            <span class="keyword">val</span> stargazers_count: String,</span><br><span class="line">            <span class="keyword">val</span> forks_count: String,</span><br><span class="line">            <span class="keyword">val</span> full_name: String,</span><br><span class="line">            <span class="keyword">val</span> html_url: String</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * GitHub 의 리포지토리에 대한 오너의 데이터가 들어와 있다</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@see</span> GitHubService#detailRepo(String, String)</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Owner</span></span>(</span><br><span class="line">            <span class="keyword">val</span> received_events_url: String,</span><br><span class="line">            <span class="keyword">val</span> organizations_url: String,</span><br><span class="line">            <span class="keyword">val</span> avatar_url: String,</span><br><span class="line">            <span class="keyword">val</span> gravatar_id: String,</span><br><span class="line">            <span class="keyword">val</span> gists_url: String,</span><br><span class="line">            <span class="keyword">val</span> starred_url: String,</span><br><span class="line">            <span class="keyword">val</span> site_admin: String,</span><br><span class="line">            <span class="keyword">val</span> type: String,</span><br><span class="line">            <span class="keyword">val</span> url: String,</span><br><span class="line">            <span class="keyword">val</span> id: String,</span><br><span class="line">            <span class="keyword">val</span> html_url: String,</span><br><span class="line">            <span class="keyword">val</span> following_url: String,</span><br><span class="line">            <span class="keyword">val</span> events_url: String,</span><br><span class="line">            <span class="keyword">val</span> login: String,</span><br><span class="line">            <span class="keyword">val</span> subscriptions_url: String,</span><br><span class="line">            <span class="keyword">val</span> repos_url: String,</span><br><span class="line">            <span class="keyword">val</span> followers_url: String</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Gson 컨버터를 이용해 json을 클래스로 변환할 것이기 때문에, API 요청 응답으로 오는 json 형식에 맞추어 클래스를 구현해주어야한다. 확실히 코틀린으로 작성하니 보일러플레이트 코드없이 깔끔한 것 같다.</p>
+<p>그리고 json 형태를 보아하니, [{repository, owner}, {repository, owner}, …] 형태로 오는 것 같다.</p>
+<p><code>listRepos()</code> 메서드로 가져온 <code>Observable</code>의 인스턴스에 <code>subscribe</code>하면 API 접근이 수행된다. 서버로부터 결과를 받으면, RxJava의 메커니즘으로 <code>onNext()</code> 메서드가 호출된다. (오류가 나면 <code>onError()</code> 메서드가 호출 될 것이다.) <code>onNext()</code> 메서드에서 progress bar 표시를 숨기고, <code>RecyclerView</code>의 <code>Adapter</code>에 서버로부터 받은 데이터를 설정한다.</p>
+<p>다음으로 리포지토리 표시를 위한 <code>RecyclerView.Adapter</code> 클래스이다.</p>
+<p>아이템이 클릭되면, 새로운 브라우저 앱을 띄우도록 이벤트를 전달받을 인터페이스가 선언되어있다. (클릭 이벤트는 액티비티로부터 수신하므로, 액티비티에서 구현한다.)</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * RecyclerView 에서 리포지토리의 목록을 표시하기 위한 Adapter 클래스</span></span><br><span class="line"><span class="comment"> * 이 클래스로 RecyclerView 의 아이템의 뷰를 생성하고, 뷰에 데이터를 넣는다</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RepositoryAdapter</span></span>(<span class="keyword">private</span> <span class="keyword">val</span> onRepositoryItemClickListener: OnRepositoryItemClickListener) :</span><br><span class="line">    RecyclerView.Adapter&lt;RepoViewHolder&gt;() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> items: List&lt;GitHubService.Companion.RepositoryItem&gt; = listOf()</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 리포지토리의 아이템이 탭되면 호출</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="class"><span class="keyword">interface</span> <span class="title">OnRepositoryItemClickListener</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">onRepositoryItemClick</span><span class="params">(item: <span class="type">GitHubService</span>.<span class="type">Companion</span>.<span class="type">RepositoryItem</span>)</span></span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 리포지토리의 데이터를 설정해서 갱신한다</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">setItemsAndRefresh</span><span class="params">(items: <span class="type">List</span>&lt;<span class="type">GitHubService</span>.<span class="type">Companion</span>.<span class="type">RepositoryItem</span>&gt;)</span></span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.items = items</span><br><span class="line">        notifyDataSetChanged()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">getItemAt</span><span class="params">(position: <span class="type">Int</span>)</span></span> = items[position]</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * RecyclerView 의 아이템 뷰 생성과 뷰를 유지할 ViewHolder 를 생성</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateViewHolder</span><span class="params">(parent: <span class="type">ViewGroup</span>, position: <span class="type">Int</span>)</span></span> = RepoViewHolder.create(parent)</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * onCreateViewHolder 로 만든 ViewHolder 의 뷰에</span></span><br><span class="line"><span class="comment">     * setItemsAndRefresh(items)으로 설정된 데이터를 넣는다</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onBindViewHolder</span><span class="params">(holder: <span class="type">RepoViewHolder</span>, position: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">val</span> item = getItemAt(position)</span><br><span class="line">        holder.bind(item)</span><br><span class="line">        <span class="comment">// 뷰가 클릭되면 클릭된 아이템을 Listener 에게 알린다</span></span><br><span class="line">        holder.itemView.setOnClickListener &#123;</span><br><span class="line">            onRepositoryItemClickListener.onRepositoryItemClick(item)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getItemCount</span><span class="params">()</span></span> = items.size</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>다음은 뷰홀더 클래스다.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RepoViewHolder</span> <span class="keyword">private</span> <span class="keyword">constructor</span></span>(itemView: View) : RecyclerView.ViewHolder(itemView) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">create</span><span class="params">(parent: <span class="type">ViewGroup</span>)</span></span> =</span><br><span class="line">            RepoViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.repo_item, parent, <span class="literal">false</span>))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">bind</span><span class="params">(item: <span class="type">GitHubService</span>.<span class="type">Companion</span>.<span class="type">RepositoryItem</span>)</span></span> &#123;</span><br><span class="line">        itemView.repo_name.text = item.name</span><br><span class="line">        itemView.repo_detail.text = item.description</span><br><span class="line">        itemView.repo_star.text = item.stargazers_count</span><br><span class="line"></span><br><span class="line">        Glide.with(itemView.context)</span><br><span class="line">            .asBitmap()</span><br><span class="line">            .load(item.owner.avatar_url)</span><br><span class="line">            .into(<span class="keyword">object</span> : BitmapImageViewTarget(itemView.repo_image) &#123;</span><br><span class="line">                <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">setResource</span><span class="params">(resource: <span class="type">Bitmap</span>?)</span></span> &#123;</span><br><span class="line">                    <span class="comment">// 이미지를 동그랗게 만든다</span></span><br><span class="line">                    <span class="keyword">val</span> circularBitmapDrawable: RoundedBitmapDrawable =</span><br><span class="line">                        RoundedBitmapDrawableFactory.create(itemView.context.resources, resource)</span><br><span class="line">                    circularBitmapDrawable.isCircular = <span class="literal">true</span></span><br><span class="line">                    itemView.repo_image.setImageDrawable(circularBitmapDrawable)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="5-고찰과-깨달음"><a href="#5-고찰과-깨달음" class="headerlink" title="5. 고찰과 깨달음"></a>5. 고찰과 깨달음</h3><p>현재 코드로는 <code>RepositoryListActivity</code>의 구현이 100줄 정도이므로 문제가 없어보인다. 실제로 이 정도 크기라면 이렇게 설계하는 것도 선택지로서 충분히 고려할 수 있다. 하지만 이 방침을 그대로 유지하면 액티비티가 거대해질 가능성이 있다. UI 로직과 View 조작이 함께 있는 상태이므로 현재 상태로도 전망이 좋지 않은 코드라고 말할 수 있다.</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://Onedelay.github.io/2018/11/23/안드로이드레벨업-6/" data-id="cjotlwwm70011p0vy905oko3e" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/Onedelay" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/11/21/안드로이드레벨업-5/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">[Android] 안드로이드 개발 레벨업 교과서 정리 #5 다양한 설계 기법</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/Concepts/">Concepts</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/CS/">CS</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/CS/자료구조/">자료구조</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ETC/">ETC</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Language/">Language</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Language/강의정리노트/">강의정리노트</a><span class="category-list-count">8</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin/">kotlin</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin-server/">kotlin server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mvp/">mvp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mvvm/">mvvm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recyclerview/">recyclerview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-boot/">spring boot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자료구조/">자료구조</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/집합/">집합</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/해시/">해시</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/힙/">힙</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Android/Concepts/">Concepts</a></p>
+                            <p class="item-title"><a href="/2018/11/23/안드로이드레벨업-6/" class="title">[Android] 안드로이드 개발 레벨업 교과서 정리 #6 다양한 설계 기법 - 기본 구현</a></p>
+                            <p class="item-date"><time datetime="2018-11-23T04:28:49.000Z" itemprop="datePublished">2018-11-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Android/Concepts/">Concepts</a></p>
+                            <p class="item-title"><a href="/2018/11/21/안드로이드레벨업-5/" class="title">[Android] 안드로이드 개발 레벨업 교과서 정리 #5 다양한 설계 기법</a></p>
+                            <p class="item-date"><time datetime="2018-11-21T13:11:41.000Z" itemprop="datePublished">2018-11-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/ETC/">ETC</a></p>
+                            <p class="item-title"><a href="/2018/11/14/kotlin-spring-boot-1/" class="title">웹 서버 만들기 with Kotlin and Spring Boot</a></p>
+                            <p class="item-date"><time datetime="2018-11-14T06:56:57.000Z" itemprop="datePublished">2018-11-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/CS/">CS</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/CS/자료구조/">자료구조</a></p>
+                            <p class="item-title"><a href="/2018/11/13/자료구조-힙정렬/" class="title">자료구조 - 힙정렬</a></p>
+                            <p class="item-date"><time datetime="2018-11-13T10:24:42.000Z" itemprop="datePublished">2018-11-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/CS/">CS</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/CS/자료구조/">자료구조</a></p>
+                            <p class="item-title"><a href="/2018/11/13/자료구조-해시/" class="title">자료구조 - 해시</a></p>
+                            <p class="item-date"><time datetime="2018-11-13T10:19:25.000Z" itemprop="datePublished">2018-11-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">8</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/kotlin/" style="font-size: 20px;">kotlin</a> <a href="/tags/kotlin-server/" style="font-size: 10px;">kotlin server</a> <a href="/tags/mvp/" style="font-size: 10px;">mvp</a> <a href="/tags/mvvm/" style="font-size: 10px;">mvvm</a> <a href="/tags/recyclerview/" style="font-size: 12.5px;">recyclerview</a> <a href="/tags/spring-boot/" style="font-size: 10px;">spring boot</a> <a href="/tags/자료구조/" style="font-size: 15px;">자료구조</a> <a href="/tags/집합/" style="font-size: 10px;">집합</a> <a href="/tags/해시/" style="font-size: 10px;">해시</a> <a href="/tags/힙/" style="font-size: 10px;">힙</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 Onedelay</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://Onedelay.github.io/2018/11/23/안드로이드레벨업-6/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
