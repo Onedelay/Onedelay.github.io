@@ -21,7 +21,7 @@
 <meta property="og:description" content="출처 : 안드로이드 개발 레벨업 교과서 142~151p  1. 패키지가 나뉜 것을 확인하자MVP에는 model, view, presenter와 contract라는 패키지가 있다. contract는 계약, 약속이라는 의미이고 view와 presenter가 구현해야 할 인터페이스가 정의되어있다. 구조는 아래와 같이 되어있다.   기본적으로 View에서 Spin">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://onedelay.github.io/images/레벨업/7_1.PNG">
-<meta property="og:updated_time" content="2018-12-04T13:28:52.302Z">
+<meta property="og:updated_time" content="2018-12-04T13:37:06.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Android] 안드로이드 개발 레벨업 교과서 정리 #7 다양한 설계 기법 - MVP">
 <meta name="twitter:description" content="출처 : 안드로이드 개발 레벨업 교과서 142~151p  1. 패키지가 나뉜 것을 확인하자MVP에는 model, view, presenter와 contract라는 패키지가 있다. contract는 계약, 약속이라는 의미이고 view와 presenter가 구현해야 할 인터페이스가 정의되어있다. 구조는 아래와 같이 되어있다.   기본적으로 View에서 Spin">
@@ -186,6 +186,8 @@
 <blockquote>
 <p> contract에 있는 인터페이스는 단어 뜻 그대로 계약서 라고 이해하면 될 듯 싶다. View와 Presenter가 계약서만 가지고 이벤트나 데이터를 주고받는다. </p>
 </blockquote>
+<p>추가적으로 리사이클러뷰 어댑터는 View와 Model의 역할을 가지고있지만 View에 더 가깝다고 한다. 근데 어떤게 맞는지 잘 모르겠다.</p>
+<p>참고하기 : <a href="https://medium.com/@jsuch2362/adapter-%EB%88%84%EA%B5%AC%EB%83%90-%EB%84%8C-data-view-2db7eff11c20" target="_blank" rel="noopener">Adapter, 누구냐 넌? — Data? View?</a></p>
 <p><br></p>
 <h3 id="2-MVP로-프로젝트를-구현하자"><a href="#2-MVP로-프로젝트를-구현하자" class="headerlink" title="2. MVP로 프로젝트를 구현하자"></a>2. MVP로 프로젝트를 구현하자</h3><p>마찬가지로 액티비티를 살펴보면, 기본 구현(<a href="https://github.com/Onedelay/GithubRepo/tree/master/app_mvp" target="_blank" rel="noopener">링크</a>)과는 달리 Presenter에 대한 인터페이스로서 <code>RepositoryListContract.View</code>를 구현했다. 이것으로 Presenter가 View에 접근할 때는 액티비티 자체가 아니라 이 인터페이스를 통해 조작할 수 있다.</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 리포지토리 목록을 표시하는 Activity</span></span><br><span class="line"><span class="comment"> * MVP 의 View 역할을 가진다</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RepositoryListActivity</span> : <span class="type">AppCompatActivity</span></span>(), RepositoryAdapter.OnRepositoryItemClickListener,</span><br><span class="line">    RepositoryListContract.View &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
