@@ -12,18 +12,18 @@
     
         <meta name="keywords" content="CS,자료구조">
     
-    <meta name="description" content="자료구조순서는 내맘대로기때문에 의미 없음.  해시(Hash)   1. 해시(Hash)LinkedList와 Array의 한계점을 극복하기 위해 제시된 방법. 기본 개념 내부적으로 배열을 사용하여 데이터를 저장하기 때문에 빠른 검색 속도를 가짐(인덱스로 접근하므로) 데이터 삽입 삭제시 shift 작업이 필요없도록 key 값을 hash function을 이용하여">
+    <meta name="description" content="자료구조순서는 내맘대로기때문에 의미 없음.  해시(Hash)   해시(Hash)LinkedList와 Array의 한계점을 극복하기 위해 제시된 방법. 기본 개념 내부적으로 배열을 사용하여 데이터를 저장하기 때문에 빠른 검색 속도를 가짐(인덱스로 접근하므로) 데이터 삽입 삭제시 shift 작업이 필요없도록 key 값을 hash function을 이용하여 데이">
 <meta name="keywords" content="CS,자료구조">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS 자료구조">
 <meta property="og:url" content="https://Onedelay.github.io/2018/12/06/CS기초-해시/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="자료구조순서는 내맘대로기때문에 의미 없음.  해시(Hash)   1. 해시(Hash)LinkedList와 Array의 한계점을 극복하기 위해 제시된 방법. 기본 개념 내부적으로 배열을 사용하여 데이터를 저장하기 때문에 빠른 검색 속도를 가짐(인덱스로 접근하므로) 데이터 삽입 삭제시 shift 작업이 필요없도록 key 값을 hash function을 이용하여">
+<meta property="og:description" content="자료구조순서는 내맘대로기때문에 의미 없음.  해시(Hash)   해시(Hash)LinkedList와 Array의 한계점을 극복하기 위해 제시된 방법. 기본 개념 내부적으로 배열을 사용하여 데이터를 저장하기 때문에 빠른 검색 속도를 가짐(인덱스로 접근하므로) 데이터 삽입 삭제시 shift 작업이 필요없도록 key 값을 hash function을 이용하여 데이">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-05T16:55:36.852Z">
+<meta property="og:updated_time" content="2018-12-06T05:27:04.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS 자료구조">
-<meta name="twitter:description" content="자료구조순서는 내맘대로기때문에 의미 없음.  해시(Hash)   1. 해시(Hash)LinkedList와 Array의 한계점을 극복하기 위해 제시된 방법. 기본 개념 내부적으로 배열을 사용하여 데이터를 저장하기 때문에 빠른 검색 속도를 가짐(인덱스로 접근하므로) 데이터 삽입 삭제시 shift 작업이 필요없도록 key 값을 hash function을 이용하여">
+<meta name="twitter:description" content="자료구조순서는 내맘대로기때문에 의미 없음.  해시(Hash)   해시(Hash)LinkedList와 Array의 한계점을 극복하기 위해 제시된 방법. 기본 개념 내부적으로 배열을 사용하여 데이터를 저장하기 때문에 빠른 검색 속도를 가짐(인덱스로 접근하므로) 데이터 삽입 삭제시 shift 작업이 필요없도록 key 값을 hash function을 이용하여 데이">
     
 
     
@@ -178,10 +178,13 @@
 <li>해시(Hash)</li>
 </ul>
 <p><br></p>
-<h2 id="1-해시-Hash"><a href="#1-해시-Hash" class="headerlink" title="1. 해시(Hash)"></a>1. 해시(Hash)</h2><p>LinkedList와 Array의 한계점을 극복하기 위해 제시된 방법.</p>
+<h2 id="해시-Hash"><a href="#해시-Hash" class="headerlink" title="해시(Hash)"></a>해시(Hash)</h2><p>LinkedList와 Array의 한계점을 극복하기 위해 제시된 방법.</p>
 <h3 id="기본-개념"><a href="#기본-개념" class="headerlink" title="기본 개념"></a>기본 개념</h3><ul>
 <li>내부적으로 배열을 사용하여 데이터를 저장하기 때문에 <strong>빠른 검색 속도</strong>를 가짐(인덱스로 접근하므로)</li>
-<li>데이터 삽입 삭제시 shift 작업이 필요없도록 key 값을 <strong>hash function</strong>을 이용하여 데이터와 연관된 고유한 숫자(작은 범위의 값)로 만들어 낸 뒤 인덱스로 사용. 이를 <strong>hash code</strong>라고 함. (자바는 Object 클래스에 <code>hashCode()</code> 라는 메서드로 정의되어있다.)</li>
+<li>데이터 삽입 삭제시 shift 작업이 필요없도록 key 값을 <strong>hash function</strong>을 이용하여 데이터와 연관된 고유한 숫자(작은 범위의 값)로 만들어 낸 뒤 인덱스로 사용. 이를 <strong>hash code</strong>라고 함. (자바는 Object 클래스에 <code>hashCode()</code> 라는 메서드로 정의되어있다. 기본 클래스가 아닌 새로 정의한 클래스(ex. POJO)에서 HashMap을 제대로 사용하기 위해서는 이 메서드를 적절하게 오버라이드해야한다.)<ul>
+<li>참조 : <a href="http://blog.naver.com/PostView.nhn?blogId=travelmaps&amp;logNo=220931531769&amp;redirect=Dlog&amp;widgetTypeCall=true" target="_blank" rel="noopener">[기초부터자바] hashcode란? hashcode와 equals의 관계(2) {오버라이드, 재정의 문제 포함}</a></li>
+</ul>
+</li>
 <li>내부적으로 사용하는 배열을 <strong>Hash Table</strong>이라고 하며, 이 크기에 따라 성능 차이가 존재한다.</li>
 </ul>
 <h3 id="Hash-code의-Collision"><a href="#Hash-code의-Collision" class="headerlink" title="Hash code의 Collision"></a>Hash code의 Collision</h3><ul>
