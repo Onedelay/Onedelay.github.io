@@ -19,6 +19,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> android </tag>
+            
+        </tags>
+      
     </entry>
     
     <entry>
@@ -31,6 +37,8 @@
       
       <categories>
           
+          <category> Programming </category>
+          
           <category> For Interview </category>
           
       </categories>
@@ -38,7 +46,7 @@
       
         <tags>
             
-            <tag> Android </tag>
+            <tag> android </tag>
             
         </tags>
       
