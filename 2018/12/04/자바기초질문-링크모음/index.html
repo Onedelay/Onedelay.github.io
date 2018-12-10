@@ -21,7 +21,7 @@
 <meta property="og:description" content="자바 기초 질문 클래스와 객체 자바 기본형과 Wrapper 클래스 자바 컬렉션 종류와 차이점 equals 메서드 VS == 연산자 추상화란? 추상클래스란? 인터페이스란? 추상클래스 VS 인터페이스 String Mutable 이란?  원본출처  클래스와 객체클래스객체를 정의하는 틀 또는 설계도. 객체의 상태를 나타내는 필드와 객체의 행동을 나타내는 메소드로">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://t1.daumcdn.net/cfile/tistory/2614AF3655269C1129">
-<meta property="og:updated_time" content="2018-12-10T11:11:16.113Z">
+<meta property="og:updated_time" content="2018-12-10T11:15:15.032Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="자바 기초 질문 모음 _ 1">
 <meta name="twitter:description" content="자바 기초 질문 클래스와 객체 자바 기본형과 Wrapper 클래스 자바 컬렉션 종류와 차이점 equals 메서드 VS == 연산자 추상화란? 추상클래스란? 인터페이스란? 추상클래스 VS 인터페이스 String Mutable 이란?  원본출처  클래스와 객체클래스객체를 정의하는 틀 또는 설계도. 객체의 상태를 나타내는 필드와 객체의 행동을 나타내는 메소드로">
@@ -179,12 +179,12 @@
 <li><a href="#클래스와-객체">클래스와 객체</a></li>
 <li><a href="#자바-기본형과-Wrapper-클래스">자바 기본형과 Wrapper 클래스</a></li>
 <li><a href="#자바-컬렉션-종류와-차이점">자바 컬렉션 종류와 차이점</a></li>
-<li><a href="#equals-메서드-VS-==-연산자">equals 메서드 VS == 연산자</a></li>
-<li><a href="#추상화란?">추상화란?</a></li>
-<li><a href="#추상클래스란?">추상클래스란?</a></li>
-<li><a href="#인터페이스란?">인터페이스란?</a></li>
+<li><a href="#equals-메서드-VS-연산자">equals 메서드 VS == 연산자</a></li>
+<li><a href="#추상화">추상화란?</a></li>
+<li><a href="#추상클래스">추상클래스란?</a></li>
+<li><a href="#인터페이스란">인터페이스란?</a></li>
 <li><a href="#추상클래스-VS-인터페이스">추상클래스 VS 인터페이스</a></li>
-<li><a href="#String-Mutable-이란?">String Mutable 이란?</a></li>
+<li><a href="#String-Mutable">String Mutable 이란?</a></li>
 </ol>
 <p><a href="https://github.com/taeiim/Android-Study/blob/master/study/week16/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A1%9C%20%EC%B7%A8%EC%97%85%ED%95%98%EA%B8%B0%20-%20%EB%A9%B4%EC%A0%91/%EC%8B%A0%EC%9E%85%20%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A1%9C%20%EC%B7%A8%EC%97%85%ED%95%98%EA%B8%B0%20-%20%EB%A9%B4%EC%A0%91.md" target="_blank" rel="noopener">원본출처</a></p>
 <p><br></p>
@@ -306,10 +306,10 @@
 <p>참고 : <a href="https://medium.com/@joongwon/string-%EC%9D%98-%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B3%A0%EC%B0%B0-57af94cbb6bc" target="_blank" rel="noopener">Java String 의 메모리에 대한 고찰</a></p>
 <p><a href="#자바-기초-질문">위로</a></p>
 <p><br></p>
-<h3 id="추상화란"><a href="#추상화란" class="headerlink" title="추상화란?"></a>추상화란?</h3><p><strong>어떤 객체를 표현함에 있어</strong> 모든 것을 다 표현하는 것이 아니라 <strong>일정 부분 특징만을 표현</strong>. 추상화를 하게 되면 목적을 위해 필요한 부분만을 찾을 수 있다. <strong>(공통된 개념과 관계에 집중할 수 있게 됨)</strong></p>
+<h3 id="추상화"><a href="#추상화" class="headerlink" title="추상화"></a>추상화</h3><p><strong>어떤 객체를 표현함에 있어</strong> 모든 것을 다 표현하는 것이 아니라 <strong>일정 부분 특징만을 표현</strong>. 추상화를 하게 되면 목적을 위해 필요한 부분만을 찾을 수 있다. <strong>(공통된 개념과 관계에 집중할 수 있게 됨)</strong></p>
 <p><a href="#자바-기초-질문">위로</a></p>
 <p><br></p>
-<h3 id="추상클래스란"><a href="#추상클래스란" class="headerlink" title="추상클래스란?"></a>추상클래스란?</h3><ol>
+<h3 id="추상클래스"><a href="#추상클래스" class="headerlink" title="추상클래스"></a>추상클래스</h3><ol>
 <li>추상 메소드(선언은되어있으나 코드 구현X, 껍데기만 있는)를 포함하는 클래스(abstract로 선언)</li>
 <li>추상메소드가 하나도 없지만 abstract로 선언한 클래스</li>
 </ol>
@@ -320,7 +320,7 @@
 <p>참고 : <a href="http://tcpschool.com/java/java_polymorphism_abstract" target="_blank" rel="noopener">다형성-추상클래스</a></p>
 <p><a href="#자바-기초-질문">위로</a></p>
 <p><br></p>
-<h3 id="인터페이스란"><a href="#인터페이스란" class="headerlink" title="인터페이스란?"></a>인터페이스란?</h3><ol>
+<h3 id="인터페이스"><a href="#인터페이스" class="headerlink" title="인터페이스"></a>인터페이스</h3><ol>
 <li><p>자바의 인터페이스는 추상 클래스와 유사.</p>
 </li>
 <li><p>인터페이스는 규격과 같은 것.(따라서 인터페이스를 수정할 때는 기존 인터페이스를 상속받아 새로운 인터페이스를 만듦. 자바는 클래스의 다중상속X, 인터페이스 다중상속O)</p>
@@ -367,7 +367,7 @@
 <p>참고 : <a href="https://brunch.co.kr/@kd4/6" target="_blank" rel="noopener">자바의 추상클래스와 인터페이스</a></p>
 <p><a href="#자바-기초-질문">위로</a></p>
 <p><br></p>
-<h3 id="String-Mutable-이란"><a href="#String-Mutable-이란" class="headerlink" title="String Mutable 이란?"></a>String Mutable 이란?</h3><ul>
+<h3 id="String-Mutable"><a href="#String-Mutable" class="headerlink" title="String Mutable"></a>String Mutable</h3><ul>
 <li><strong>Immutable(가변) 객체</strong> : 객체 내의 특정요소를 변경 할 수 있는 객체 (Ex. List, ArrayList, HashMap)</li>
 <li><strong>Mutable(불변) 객체</strong> : 객체 내의 특정 요소의 값을 변경 할 수 없는 객체 (Ex. String, Integer, Double, Long). setter 없음, heap 영역에서 변경불가 라는 뜻(String a = ”a”; a = ”b” 와 같은 재할당은 가능)</li>
 </ul>
