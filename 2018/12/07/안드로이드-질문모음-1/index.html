@@ -12,19 +12,19 @@
     
         <meta name="keywords" content="android">
     
-    <meta name="description" content="안드로이드 면접 질문 Thread간 통신방법 Context Activity의 생명주기 Fragment의 생명주기 Content Provider VS Content Resolver XML 기반 레이아웃이 중요한 이유 Manifest Vector VS Bitmap ConstraintLayout  원본출처  1. Thread간 통신방법Android의 UI를 담당">
+    <meta name="description" content="안드로이드 면접 질문 Thread간 통신방법 Context Activity의 생명주기 Fragment의 생명주기 Content Provider VS Content Resolver XML 기반 레이아웃이 중요한 이유 Manifest Vector VS Bitmap ConstraintLayout  원본출처  Thread간 통신방법Android의 UI를 담당하는">
 <meta name="keywords" content="android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="안드로이드 질문모음 _ 1">
 <meta property="og:url" content="https://Onedelay.github.io/2018/12/07/안드로이드-질문모음-1/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="안드로이드 면접 질문 Thread간 통신방법 Context Activity의 생명주기 Fragment의 생명주기 Content Provider VS Content Resolver XML 기반 레이아웃이 중요한 이유 Manifest Vector VS Bitmap ConstraintLayout  원본출처  1. Thread간 통신방법Android의 UI를 담당">
+<meta property="og:description" content="안드로이드 면접 질문 Thread간 통신방법 Context Activity의 생명주기 Fragment의 생명주기 Content Provider VS Content Resolver XML 기반 레이아웃이 중요한 이유 Manifest Vector VS Bitmap ConstraintLayout  원본출처  Thread간 통신방법Android의 UI를 담당하는">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://t1.daumcdn.net/cfile/tistory/2139F134566EBC6B08">
-<meta property="og:updated_time" content="2018-12-10T11:01:00.193Z">
+<meta property="og:updated_time" content="2018-12-10T11:06:01.476Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="안드로이드 질문모음 _ 1">
-<meta name="twitter:description" content="안드로이드 면접 질문 Thread간 통신방법 Context Activity의 생명주기 Fragment의 생명주기 Content Provider VS Content Resolver XML 기반 레이아웃이 중요한 이유 Manifest Vector VS Bitmap ConstraintLayout  원본출처  1. Thread간 통신방법Android의 UI를 담당">
+<meta name="twitter:description" content="안드로이드 면접 질문 Thread간 통신방법 Context Activity의 생명주기 Fragment의 생명주기 Content Provider VS Content Resolver XML 기반 레이아웃이 중요한 이유 Manifest Vector VS Bitmap ConstraintLayout  원본출처  Thread간 통신방법Android의 UI를 담당하는">
 <meta name="twitter:image" content="https://t1.daumcdn.net/cfile/tistory/2139F134566EBC6B08">
     
 
@@ -176,19 +176,19 @@
         
         <div class="article-entry" itemprop="articleBody">
             <h1 id="안드로이드-면접-질문"><a href="#안드로이드-면접-질문" class="headerlink" title="안드로이드 면접 질문"></a>안드로이드 면접 질문</h1><ol>
-<li><a href="#1.-Thread간-통신방법">Thread간 통신방법</a></li>
-<li><a href="#2.-Context">Context</a></li>
-<li><a href="#3.-Activity의-생명주기">Activity의 생명주기</a></li>
-<li><a href="#4.-Fragment의-생명주기">Fragment의 생명주기</a></li>
-<li><a href="#5.-Content-Provider-VS-Content-Resolver">Content Provider VS Content Resolver</a></li>
-<li><a href="#6.-XML-기반-레이아웃이-중요한-이유">XML 기반 레이아웃이 중요한 이유</a></li>
-<li><a href="#7.-Manifest">Manifest</a></li>
-<li><a href="#8.-Vector-VS-Bitmap">Vector VS Bitmap</a></li>
-<li><a href="#9.-ConstraintLayout">ConstraintLayout</a></li>
+<li><a href="#Thread간-통신방법">Thread간 통신방법</a></li>
+<li><a href="#Context">Context</a></li>
+<li><a href="#Activity의-생명주기">Activity의 생명주기</a></li>
+<li><a href="#Fragment의-생명주기">Fragment의 생명주기</a></li>
+<li><a href="#Content-Provider-VS-Content-Resolver">Content Provider VS Content Resolver</a></li>
+<li><a href="#XML-기반-레이아웃이-중요한-이유">XML 기반 레이아웃이 중요한 이유</a></li>
+<li><a href="#Manifest">Manifest</a></li>
+<li><a href="#Vector-VS-Bitmap">Vector VS Bitmap</a></li>
+<li><a href="#ConstraintLayout">ConstraintLayout</a></li>
 </ol>
 <p><a href="https://github.com/taeiim/Android-Study/blob/master/study/week16/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A1%9C%20%EC%B7%A8%EC%97%85%ED%95%98%EA%B8%B0%20-%20%EB%A9%B4%EC%A0%91/%EC%8B%A0%EC%9E%85%20%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A1%9C%20%EC%B7%A8%EC%97%85%ED%95%98%EA%B8%B0%20-%20%EB%A9%B4%EC%A0%91.md#3-%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EB%A9%B4%EC%A0%91%EC%A7%88%EB%AC%B8" target="_blank" rel="noopener">원본출처</a></p>
 <p><br></p>
-<h3 id="1-Thread간-통신방법"><a href="#1-Thread간-통신방법" class="headerlink" title="1. Thread간 통신방법"></a>1. Thread간 통신방법</h3><p>Android의 UI를 담당하는 스레드는 메인 스레드(UI 스레드)인데, 오랜 시간이 걸리는 작업을 메인스레드에서 수행할 경우 앱의 성능이 저하된다. 따라서 여분의 스레드를 사용하여 작업을 수행해야하고, 이 결과를 반영하기 위해 메인 스레드와의 통신이 필요하게 된다. 그래서 메인 스레드에 접근하는 방법으로 Looper와 Handler를 이용하면 된다. 그리고 UI 작업을 메인 스레드에서만 담당하는 이유는 두 개 이상의 스레드를 사용할 때의 동기화 이슈를 차단하기 위함이다.</p>
+<h3 id="Thread간-통신방법"><a href="#Thread간-통신방법" class="headerlink" title="Thread간 통신방법"></a>Thread간 통신방법</h3><p>Android의 UI를 담당하는 스레드는 메인 스레드(UI 스레드)인데, 오랜 시간이 걸리는 작업을 메인스레드에서 수행할 경우 앱의 성능이 저하된다. 따라서 여분의 스레드를 사용하여 작업을 수행해야하고, 이 결과를 반영하기 위해 메인 스레드와의 통신이 필요하게 된다. 그래서 메인 스레드에 접근하는 방법으로 Looper와 Handler를 이용하면 된다. 그리고 UI 작업을 메인 스레드에서만 담당하는 이유는 두 개 이상의 스레드를 사용할 때의 동기화 이슈를 차단하기 위함이다.</p>
 <p>Android는 Java의 스레드를 좀 더 쉽게 사용할 수록 래핑한 HandlerThread, AsyncTask를 제공한다.</p>
 <p>참고 : <a href="https://developer.android.com/training/multiple-threads/communicate-ui" target="_blank" rel="noopener">https://developer.android.com/training/multiple-threads/communicate-ui</a></p>
 <h4 id="Looper"><a href="#Looper" class="headerlink" title="Looper"></a>Looper</h4><p>메인 스레드는 내부적으로 Looper를 가지며 그 안에는 Message Queue가 포함된다. Message Queue는 스레드가 다른 스레드나 혹은 자기 자신으로부터 전달받은 Message를 보관하는 Queue이다(FIFO). Looper는 무한 루프를 돌며 자신이 속한 스레드의 Message Queue에서 Message 객체를 차례로 꺼내 Handler가 처리하도록 전달한다.</p>
@@ -227,11 +227,11 @@
 <p>참고 : <a href="https://academy.realm.io/kr/posts/android-thread-looper-handler/" target="_blank" rel="noopener">안드로이드 백그라운드 잘 다루기 Thread, Looper, Handler</a></p>
 <p><a href="#안드로이드-면접-질문">위로</a></p>
 <p><br></p>
-<h3 id="2-Context"><a href="#2-Context" class="headerlink" title="2. Context"></a>2. Context</h3><p>현재 사용되고 있는 어플리케이션(또는 액티비티)에 대한 포괄적인 정보를 지니고 있는 객체</p>
+<h3 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h3><p>현재 사용되고 있는 어플리케이션(또는 액티비티)에 대한 포괄적인 정보를 지니고 있는 객체</p>
 <p>참고 : <a href="http://shnoble.tistory.com/57" target="_blank" rel="noopener">[Android] Context란?</a></p>
 <p><a href="#안드로이드-면접-질문">위로</a></p>
 <p><br></p>
-<h3 id="3-Activity의-생명주기"><a href="#3-Activity의-생명주기" class="headerlink" title="3. Activity의 생명주기"></a>3. Activity의 생명주기</h3><p><img src="https://t1.daumcdn.net/cfile/tistory/2139F134566EBC6B08" alt=""></p>
+<h3 id="Activity의-생명주기"><a href="#Activity의-생명주기" class="headerlink" title="Activity의 생명주기"></a>Activity의 생명주기</h3><p><img src="https://t1.daumcdn.net/cfile/tistory/2139F134566EBC6B08" alt=""></p>
 <p>참고 : <a href="http://one-delay.tistory.com/8?category=766130" target="_blank" rel="noopener">내블로그1</a>, <a href="https://onedelay.github.io/2018/11/07/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%EB%A0%88%EB%B2%A8%EC%97%85-1/">내블로그2</a></p>
 <hr>
 <p><strong>Q. 앱을 사용하는 도중에 카카오톡 메세지가 온다면 사용하던 앱의 TopActivity의 생명주기는 어떤 상태가 되나?</strong></p>
@@ -245,7 +245,7 @@
 <p>A. (다른 액티비티에 깔려서) onStop 상태에 있다가 다시 돌아오면 호출</p>
 <p><a href="#안드로이드-면접-질문">위로</a></p>
 <p><br></p>
-<h3 id="4-Fragment의-생명주기"><a href="#4-Fragment의-생명주기" class="headerlink" title="4. Fragment의 생명주기"></a>4. Fragment의 생명주기</h3><p><img src="https://i.stack.imgur.com/fRxIQ.png" alt=""></p>
+<h3 id="Fragment의-생명주기"><a href="#Fragment의-생명주기" class="headerlink" title="Fragment의 생명주기"></a>Fragment의 생명주기</h3><p><img src="https://i.stack.imgur.com/fRxIQ.png" alt=""></p>
 <h5 id="최초-생성-LifeCycle"><a href="#최초-생성-LifeCycle" class="headerlink" title="최초 생성 LifeCycle"></a>최초 생성 LifeCycle</h5><ol>
 <li><strong>onAttatch()</strong> : Fragment가 Activity에 붙을 때 호출</li>
 <li><strong>onCreate()</strong> : Activity에서의 oncreate()와 비슷, ui관련 작업X</li>
@@ -266,7 +266,7 @@
 </ol>
 <p><a href="#안드로이드-면접-질문">위로</a></p>
 <p><br></p>
-<h3 id="5-Content-Provider-VS-Content-Resolver"><a href="#5-Content-Provider-VS-Content-Resolver" class="headerlink" title="5. Content Provider VS Content Resolver"></a>5. Content Provider VS Content Resolver</h3><ul>
+<h3 id="Content-Provider-VS-Content-Resolver"><a href="#Content-Provider-VS-Content-Resolver" class="headerlink" title="Content Provider VS Content Resolver"></a>Content Provider VS Content Resolver</h3><ul>
 <li><p><strong>Content Provider</strong> : 어플리케이션 내에서 사용할 수 있는 데이터를 ‘공유’하기 위한 컴포넌트</p>
 <p>Ex) 연락처,이미지 등 (카카오톡)</p>
 </li>
@@ -276,13 +276,13 @@
 </ul>
 <p><a href="#안드로이드-면접-질문">위로</a></p>
 <p><br></p>
-<h3 id="6-XML-기반-레이아웃이-중요한-이유"><a href="#6-XML-기반-레이아웃이-중요한-이유" class="headerlink" title="6. XML 기반 레이아웃이 중요한 이유"></a>6. XML 기반 레이아웃이 중요한 이유</h3><p>동작을 제어하는 코드로부터 분리시킬 수 있고, UI의 구조를 시각화하기 더 쉽기 때문이다. 소스로 레이아웃을 작성했다면, 레이아웃을 변경할 때마다 재컴파일 해야하는 번거로움이 있다.</p>
+<h3 id="XML-기반-레이아웃이-중요한-이유"><a href="#XML-기반-레이아웃이-중요한-이유" class="headerlink" title="XML 기반 레이아웃이 중요한 이유"></a>XML 기반 레이아웃이 중요한 이유</h3><p>동작을 제어하는 코드로부터 분리시킬 수 있고, UI의 구조를 시각화하기 더 쉽기 때문이다. 소스로 레이아웃을 작성했다면, 레이아웃을 변경할 때마다 재컴파일 해야하는 번거로움이 있다.</p>
 <p><a href="#안드로이드-면접-질문">위로</a></p>
 <p><br></p>
-<h3 id="7-Manifest"><a href="#7-Manifest" class="headerlink" title="7. Manifest"></a>7. Manifest</h3><p>애플리케이션에 대한 필수적인 정보를 안드로이드 플랫폼에 알려준다. 모든 안드로이드 앱은 반드시 AndroidManifest.xml 파일을 자신의 루트 디렉토리에 가지고 있어야한다.</p>
+<h3 id="Manifest"><a href="#Manifest" class="headerlink" title="Manifest"></a>Manifest</h3><p>애플리케이션에 대한 필수적인 정보를 안드로이드 플랫폼에 알려준다. 모든 안드로이드 앱은 반드시 AndroidManifest.xml 파일을 자신의 루트 디렉토리에 가지고 있어야한다.</p>
 <p><a href="#안드로이드-면접-질문">위로</a></p>
 <p><br></p>
-<h3 id="8-Vector-VS-Bitmap"><a href="#8-Vector-VS-Bitmap" class="headerlink" title="8. Vector VS Bitmap"></a>8. Vector VS Bitmap</h3><ul>
+<h3 id="Vector-VS-Bitmap"><a href="#Vector-VS-Bitmap" class="headerlink" title="Vector VS Bitmap"></a>Vector VS Bitmap</h3><ul>
 <li><strong>Vector</strong> : 리사이징이 되어도 전혀 깨지지 않음. 모든 해상도에서 자유자재로 활용할 수 있기 때문에 특정 해상도에 제한되어 있지 않다는 것이 핵심. Ex) SVG<ul>
 <li>참고 : <a href="https://developer.android.com/guide/topics/graphics/vector-drawable-resources" target="_blank" rel="noopener">https://developer.android.com/guide/topics/graphics/vector-drawable-resources</a></li>
 </ul>
@@ -291,7 +291,7 @@
 </ul>
 <p><a href="#안드로이드-면접-질문">위로</a></p>
 <p><br></p>
-<h3 id="9-ConstraintLayout"><a href="#9-ConstraintLayout" class="headerlink" title="9. ConstraintLayout"></a>9. ConstraintLayout</h3><p>참고 : <a href="https://developer.android.com/training/constraint-layout/" target="_blank" rel="noopener">https://developer.android.com/training/constraint-layout/</a></p>
+<h3 id="ConstraintLayout"><a href="#ConstraintLayout" class="headerlink" title="ConstraintLayout"></a>ConstraintLayout</h3><p>참고 : <a href="https://developer.android.com/training/constraint-layout/" target="_blank" rel="noopener">https://developer.android.com/training/constraint-layout/</a></p>
 <p><a href="#안드로이드-면접-질문">위로</a></p>
 
         </div>
