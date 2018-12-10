@@ -15,11 +15,11 @@
     <meta name="description" content="우선 공부해야 할 것들 [Java] Annotation [Java] Annotation Processing [Java] Reflection [디자인 패턴] Observer Pattern [디자인 패턴] Factory Method Pattern [디자인 패턴] Builder Pattern [디자인 패턴] Singleton Pattern [디자인 패턴] Ada">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Databinding _ 우선 공부해야 할 것들">
-<meta property="og:url" content="https://Onedelay.github.io/2018/12/04/안드로이드-데이터바인딩-삽질기/index.html">
+<meta property="og:url" content="https://Onedelay.github.io/2018/12/10/안드로이드-데이터바인딩-삽질기/index.html">
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="우선 공부해야 할 것들 [Java] Annotation [Java] Annotation Processing [Java] Reflection [디자인 패턴] Observer Pattern [디자인 패턴] Factory Method Pattern [디자인 패턴] Builder Pattern [디자인 패턴] Singleton Pattern [디자인 패턴] Ada">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-07T05:54:57.089Z">
+<meta property="og:updated_time" content="2018-12-10T03:58:20.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Databinding _ 우선 공부해야 할 것들">
 <meta name="twitter:description" content="우선 공부해야 할 것들 [Java] Annotation [Java] Annotation Processing [Java] Reflection [디자인 패턴] Observer Pattern [디자인 패턴] Factory Method Pattern [디자인 패턴] Builder Pattern [디자인 패턴] Singleton Pattern [디자인 패턴] Ada">
@@ -155,8 +155,8 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2018/12/04/안드로이드-데이터바인딩-삽질기/" class="article-date">
-            <time datetime="2018-12-04T11:40:16.000Z" itemprop="datePublished">2018-12-04</time>
+        <a href="/2018/12/10/안드로이드-데이터바인딩-삽질기/" class="article-date">
+            <time datetime="2018-12-10T02:30:16.000Z" itemprop="datePublished">2018-12-10</time>
         </a>
     </div>
 
@@ -225,7 +225,7 @@
 <p>참고 : <a href="https://flowarc.tistory.com/entry/%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4-%EC%98%B5%EC%A0%80%EB%B2%84-%ED%8C%A8%ED%84%B4Observer-Pattern" target="_blank" rel="noopener">디자인패턴 - 옵저버 패턴(Observer Pattern)</a>, <a href="http://jusungpark.tistory.com/8" target="_blank" rel="noopener">디자인패턴 - 옵저버 패턴 (observer pattern)</a></p>
 <p><br></p>
 <h3 id="Android-Example"><a href="#Android-Example" class="headerlink" title="Android Example"></a>Android Example</h3><p>+, - 버튼을 누르면 TextView의 내용을 변경하는 간단한 예제이다. 추가적으로 add 버튼을 누르면 옵저버를 attach하고, delete 버튼을 누르면 detach 한다.</p>
-<p>각 클래스를 정의할 때 중요한 것은 <strong>import 가 있으면 안된다 (다른 클래스와 결합되어있으면 안된다)</strong></p>
+<p>각 클래스를 정의할 때 중요한 것은 <strong>import 가 있으면 안된다 (다른 클래스와 결합되어있으면 안된다)</strong> -&gt; 객체지향적으로 설계하자!</p>
 <h4 id="Publisher-클래스"><a href="#Publisher-클래스" class="headerlink" title="Publisher 클래스"></a>Publisher 클래스</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">Publisher</span>&lt;<span class="type">T</span>&gt;</span>(defaultValue: T) &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> observers = ArrayList&lt;Observer&lt;T&gt;&gt;() <span class="comment">// 이 클래스를 구독하고 있는 옵저버 리스트</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> value: T = defaultValue</span><br><span class="line">    <span class="keyword">var</span> allowInit = <span class="literal">true</span> <span class="comment">// 퍼블리셔의 상태를 최신으로 유지할지 여부(옵저버가 detach 된 상태에서는 갱신되지 않는다.)</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">add</span><span class="params">(observer: <span class="type">Observer</span>&lt;<span class="type">T</span>&gt;)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!observers.contains(observer)) &#123;</span><br><span class="line">            observers.add(observer)</span><br><span class="line">            <span class="keyword">if</span> (allowInit) observer.update(value)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">delete</span><span class="params">(observer: <span class="type">Observer</span>&lt;<span class="type">T</span>&gt;)</span></span> &#123;</span><br><span class="line">        observers.remove(observer)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">fun</span> <span class="title">setValue</span><span class="params">(value: <span class="type">T</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.value = value</span><br><span class="line">        notifyObserver()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">fun</span> <span class="title">getValue</span><span class="params">()</span></span>: T = value</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">notifyObserver</span><span class="params">()</span></span> &#123;</span><br><span class="line">        observers.forEach &#123; it.update(value) &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="Publisher-클래스를-상속한-MyPublisher"><a href="#Publisher-클래스를-상속한-MyPublisher" class="headerlink" title="Publisher 클래스를 상속한 MyPublisher"></a>Publisher 클래스를 상속한 MyPublisher</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyPublisher</span> : <span class="type">Publisher</span>&lt;<span class="type">Int</span>&gt;</span>(<span class="number">0</span>) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">increase</span><span class="params">()</span></span> &#123;</span><br><span class="line">        setValue(getValue() + <span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">decrease</span><span class="params">()</span></span> &#123;</span><br><span class="line">        setValue(getValue() - <span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="MainActivity"><a href="#MainActivity" class="headerlink" title="MainActivity"></a>MainActivity</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> : <span class="type">AppCompatActivity</span></span>(), Observer&lt;<span class="built_in">Int</span>&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> publisher = MyPublisher()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        setContentView(R.layout.activity_main)</span><br><span class="line"></span><br><span class="line">        publisher.allowInit = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">        btn_plus.setOnClickListener &#123;</span><br><span class="line">            publisher.increase()</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        btn_minus.setOnClickListener &#123;</span><br><span class="line">            publisher.decrease()</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        btn_add.setOnClickListener &#123;</span><br><span class="line">            publisher.add(<span class="keyword">this</span>)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        btn_delete.setOnClickListener &#123;</span><br><span class="line">            publisher.delete(<span class="keyword">this</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">update</span><span class="params">(value: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">        textView.text = value.toString()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -233,16 +233,28 @@
 <p>몇 시간 고민하다 혼자 해결 못하고 결국 배웠다. 다음부턴 삽질시간이 길어지면 바로 중단하고 다음 단계로 넘어가자.</p>
 </blockquote>
 <p><br></p>
-<h2 id="Factory-Method-Pattern"><a href="#Factory-Method-Pattern" class="headerlink" title="Factory Method Pattern"></a>Factory Method Pattern</h2><p>팩토리 메소드 패턴을 사용하는 이유는 <strong>클래스간의 결합도를 낮추기 위한것</strong>이다. 결합도라는 것은 간단히 말해 <strong>클래스의 변경점이 생겼을 때 얼마나 다른 클래스에도 영향을 주는가</strong>이다. 팩토리 메소드 패턴을 사용하는 경우 직접 객체를 생성해 사용하는 것을 방지하고 서브 클래스에 위임함으로써 보다 효율적인 코드 제어를 할 수 있고 의존성을 제거한다. 결과적으로 결합도 또한 낮출 수 있다.</p>
+<h2 id="Factory-Method-Pattern"><a href="#Factory-Method-Pattern" class="headerlink" title="Factory Method Pattern"></a>Factory Method Pattern</h2><p>팩토리 메소드 패턴을 사용하는 이유는 <strong>클래스간의 결합도를 낮추기 위한것</strong>이다. 결합도라는 것은 간단히 말해 <strong>클래스의 변경점이 생겼을 때 얼마나 다른 클래스에도 영향을 주는가</strong>이다. 팩토리 메소드 패턴을 사용하는 경우 직접 객체를 생성해 사용하는 것을 방지하고 서브 클래스(팩토리 메소드 클래스)에 위임함으로써 보다 효율적인 코드 제어를 할 수 있고 의존성을 제거한다. 결과적으로 결합도를 낮춰 유지보수가 용이해진다.</p>
 <p>참고 : <a href="https://jdm.kr/blog/180" target="_blank" rel="noopener">팩토리 메소드 패턴(Factory Method Pattern)</a>, <a href="http://limkydev.tistory.com/83" target="_blank" rel="noopener">[Design_Pattern] 팩토리 메서드 패턴(Factory Method Pattern)</a></p>
 <h4 id="Abstract-Factory-Pattern"><a href="#Abstract-Factory-Pattern" class="headerlink" title="Abstract Factory Pattern"></a>Abstract Factory Pattern</h4><p><strong>추상 팩토리 패턴은 많은 수의 연관된 서브 클래스를 특정 그룹으로 묶어 한번에 교체할 수 있도록 만든 디자인 패턴</strong>이다. 예를 들어 특정 라이브러리를 배포하는데 OS별로 지원하는 기능이 상이하다면 추상 팩토리 패턴을 사용해 OS별 기능 변경을 통합적으로 변경 할 수 있다.</p>
 <p>참고 : <a href="https://jdm.kr/blog/192" target="_blank" rel="noopener">추상 팩토리 패턴(Abstract Factory Pattern)</a></p>
 <p><br></p>
-<h2 id="Builder-Pattern"><a href="#Builder-Pattern" class="headerlink" title="Builder Pattern"></a>Builder Pattern</h2><p>빌더 패턴은 추상 팩토리 패턴이나 팩토리 메소드 패턴처럼 새로운 객체를 만들어서 반환하는 패턴이긴 하지만 실제 동작 방식은 조금 다르다. 빌더 패턴은 생성자에 들어갈 매개 변수가 많든 적든 차례차례 매개 변수를 받아들이고, 모든 매개 변수를 받은 뒤에 이 변수들을 통합해서 한번에 사용한다.</p>
-<blockquote>
-<p>집중이 안돼서 다음으로 미룬다. 다음 링크들 다시 정독하기.</p>
-</blockquote>
-<p>참고 : <a href="https://jdm.kr/blog/217" target="_blank" rel="noopener">빌더 패턴(Builder Pattern)</a>, <a href="http://bellgori.tistory.com/entry/Android-pattern-04-%EB%B9%8C%EB%8D%94-%ED%8C%A8%ED%84%B4" target="_blank" rel="noopener">[pattern 04] 빌더 패턴]</a></p>
+<h2 id="Builder-Pattern"><a href="#Builder-Pattern" class="headerlink" title="Builder Pattern"></a>Builder Pattern</h2><p>빌더 패턴은 추상 팩토리 패턴이나 팩토리 메소드 패턴처럼 새로운 객체를 만들어서 반환하는 패턴이긴 하지만 실제 동작 방식은 조금 다르다. 빌더 패턴은 <strong>생성자에 들어갈 매개 변수가 많든 적든 차례차례 매개 변수</strong>를 받아들이고, 모든 매개 변수를 받은 뒤에 <strong>이 변수들을 통합</strong>해서 한번에 사용한다.</p>
+<h5 id="Builder-pattern으로-해결할-수-있는-것"><a href="#Builder-pattern으로-해결할-수-있는-것" class="headerlink" title="Builder pattern으로 해결할 수 있는 것"></a>Builder pattern으로 해결할 수 있는 것</h5><ul>
+<li>불필요한 생성자를 만들지 않고 객체를 만든다.</li>
+<li>데이터의 순서에 상관 없이 객체를 만들어 낸다.</li>
+<li>사용자가 봤을때 명시적이고 이해할 수 있어야 한다.</li>
+</ul>
+<h5 id="builder-pattern의-예시"><a href="#builder-pattern의-예시" class="headerlink" title="builder pattern의 예시"></a>builder pattern의 예시</h5><ul>
+<li>Retrofit</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> retrofit = Retrofit.Builder()</span><br><span class="line">                .baseUrl(baseUrl)</span><br><span class="line">                .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">                .client(client)</span><br><span class="line">                .build()</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 리턴 값이 Builder. 그래서 체이닝이 되는 것!</span></span><br><span class="line"><span class="keyword">public</span> Builder baseUrl(String baseUrl) &#123;</span><br><span class="line">      checkNotNull(baseUrl, <span class="string">"baseUrl == null"</span>);</span><br><span class="line">      HttpUrl httpUrl = HttpUrl.parse(baseUrl);</span><br><span class="line">      <span class="keyword">if</span> (httpUrl == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> new IllegalArgumentException(<span class="string">"Illegal URL: "</span> + baseUrl);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> baseUrl(httpUrl);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> Retrofit build() &#123;</span><br><span class="line">      <span class="comment">// 생략</span></span><br><span class="line">      <span class="keyword">return</span> new Retrofit(callFactory, baseUrl, unmodifiableList(converterFactories),</span><br><span class="line">          unmodifiableList(callAdapterFactories), callbackExecutor, validateEagerly);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Observable</li>
+<li>Glide, Picasso</li>
+<li>…</li>
+</ul>
+<p>참고 : <a href="https://jdm.kr/blog/217" target="_blank" rel="noopener">빌더 패턴(Builder Pattern)</a>, <a href="http://bellgori.tistory.com/entry/Android-pattern-04-%EB%B9%8C%EB%8D%94-%ED%8C%A8%ED%84%B4" target="_blank" rel="noopener">[pattern 04] 빌더 패턴-마지막에 () 빼야함</a></p>
 
         </div>
         <footer class="article-footer">
@@ -250,7 +262,7 @@
 
 
 
-    <a data-url="https://Onedelay.github.io/2018/12/04/안드로이드-데이터바인딩-삽질기/" data-id="cjpdj29qc000urgvya9tftt42" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://Onedelay.github.io/2018/12/10/안드로이드-데이터바인딩-삽질기/" data-id="cjpdj29qc000urgvya9tftt42" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -348,20 +360,10 @@
         
 <nav id="article-nav">
     
-        <a href="/2018/12/04/안드로이드레벨업-7/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            [Android] 안드로이드 개발 레벨업 교과서 정리 #7 다양한 설계 기법 - MVP
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2018/12/04/자바기초질문-링크모음/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/12/07/안드로이드-질문모음-1/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">자바 기초 질문 모음 _ 1</p>
+        <p class="article-nav-title">안드로이드 질문모음 _ 1</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -403,6 +405,15 @@
                     <li>
                         
                         <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Android/ETC/">ETC</a></p>
+                            <p class="item-title"><a href="/2018/12/10/안드로이드-데이터바인딩-삽질기/" class="title">Databinding _ 우선 공부해야 할 것들</a></p>
+                            <p class="item-date"><time datetime="2018-12-10T02:30:16.000Z" itemprop="datePublished">2018-12-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/For-Interview/">For Interview</a></p>
                             <p class="item-title"><a href="/2018/12/07/안드로이드-질문모음-1/" class="title">안드로이드 질문모음 _ 1</a></p>
                             <p class="item-date"><time datetime="2018-12-07T03:13:32.000Z" itemprop="datePublished">2018-12-07</time></p>
@@ -424,15 +435,6 @@
                             <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Android/Concepts/">Concepts</a></p>
                             <p class="item-title"><a href="/2018/12/04/안드로이드레벨업-7/" class="title">[Android] 안드로이드 개발 레벨업 교과서 정리 #7 다양한 설계 기법 - MVP</a></p>
                             <p class="item-date"><time datetime="2018-12-04T12:40:39.000Z" itemprop="datePublished">2018-12-04</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Android/ETC/">ETC</a></p>
-                            <p class="item-title"><a href="/2018/12/04/안드로이드-데이터바인딩-삽질기/" class="title">Databinding _ 우선 공부해야 할 것들</a></p>
-                            <p class="item-date"><time datetime="2018-12-04T11:40:16.000Z" itemprop="datePublished">2018-12-04</time></p>
                         </div>
                     </li>
                 
@@ -520,7 +522,7 @@
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'https://Onedelay.github.io/2018/12/04/안드로이드-데이터바인딩-삽질기/';
+    var disqus_url = 'https://Onedelay.github.io/2018/12/10/안드로이드-데이터바인딩-삽질기/';
     
     (function() {
     var dsq = document.createElement('script');
