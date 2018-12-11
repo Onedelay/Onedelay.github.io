@@ -20,12 +20,12 @@
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="안드로이드 면접 질문 Thread간 통신방법 Context Activity의 생명주기 Fragment의 생명주기 Content Provider VS Content Resolver XML 기반 레이아웃이 중요한 이유 Manifest Vector VS Bitmap ConstraintLayout  원본출처  Thread간 통신방법Android의 UI를 담당하는">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://t1.daumcdn.net/cfile/tistory/2139F134566EBC6B08">
-<meta property="og:updated_time" content="2018-12-10T11:06:01.476Z">
+<meta property="og:image" content="https://kairo96.gitbooks.io/android/content/pic2/2-4-1-1.jpg">
+<meta property="og:updated_time" content="2018-12-11T03:27:22.496Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="안드로이드 질문모음 _ 1">
 <meta name="twitter:description" content="안드로이드 면접 질문 Thread간 통신방법 Context Activity의 생명주기 Fragment의 생명주기 Content Provider VS Content Resolver XML 기반 레이아웃이 중요한 이유 Manifest Vector VS Bitmap ConstraintLayout  원본출처  Thread간 통신방법Android의 UI를 담당하는">
-<meta name="twitter:image" content="https://t1.daumcdn.net/cfile/tistory/2139F134566EBC6B08">
+<meta name="twitter:image" content="https://kairo96.gitbooks.io/android/content/pic2/2-4-1-1.jpg">
     
 
     
@@ -227,12 +227,35 @@
 <p>참고 : <a href="https://academy.realm.io/kr/posts/android-thread-looper-handler/" target="_blank" rel="noopener">안드로이드 백그라운드 잘 다루기 Thread, Looper, Handler</a></p>
 <p><a href="#안드로이드-면접-질문">위로</a></p>
 <p><br></p>
-<h3 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h3><p>현재 사용되고 있는 어플리케이션(또는 액티비티)에 대한 포괄적인 정보를 지니고 있는 객체</p>
-<p>참고 : <a href="http://shnoble.tistory.com/57" target="_blank" rel="noopener">[Android] Context란?</a></p>
+<h3 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h3><p>요약 : 현재 사용되고 있는 어플리케이션(또는 액티비티)에 대한 포괄적인 정보를 지니고 있는 객체</p>
+<ul>
+<li>어플리케이션의 정보에 접근하기 위한 인터페이스.</li>
+<li><code>Context</code> 를 사용하면 <code>getPackageName()</code> , <code>getResource</code>등과 같이 어플리케이션에 대해 시스템이 관리하는 정보에 접근할 수 있으며 <code>startActivity()</code> , <code>bindService</code> 등과 같이 안드로이드가 제공하는 시스템 서비스를 사용할때도 된다.</li>
+<li>보통 다른 프로그램에서 시스템 레벨에서 제공하는 전역 정보에 접근하기 위해 <code>System</code> 정적 클래스에 접근하는 것과 비슷한 맥락이다.</li>
+<li>안드로이드에서는 어플리케이션 관리를 시스템에서 하는 것이 아니라 별도의 <code>ActivityManagerService</code> 라는 또다른 어플리케이션이 관리하고 있기 때문에 어플리케이션과 연관된 시스템 레벨의 함수를 호출하려면 <code>ActivityManagerService</code> 를 통해야 한다.</li>
+<li>따라서 <code>ActivityManagerService</code> 에게 자신이 어떤 어플리케이션인지 알리고 시스템 레벨의 함수에 접근하기 위해서 <code>Context</code> 객체가 필요한 것.</li>
+</ul>
+<p>참고 : <a href="https://hyeonu1258.github.io/2018/04/01/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EB%A9%B4%EC%A0%912/" target="_blank" rel="noopener">Context란?</a></p>
 <p><a href="#안드로이드-면접-질문">위로</a></p>
 <p><br></p>
-<h3 id="Activity의-생명주기"><a href="#Activity의-생명주기" class="headerlink" title="Activity의 생명주기"></a>Activity의 생명주기</h3><p><img src="https://t1.daumcdn.net/cfile/tistory/2139F134566EBC6B08" alt=""></p>
-<p>참고 : <a href="http://one-delay.tistory.com/8?category=766130" target="_blank" rel="noopener">내블로그1</a>, <a href="https://onedelay.github.io/2018/11/07/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%EB%A0%88%EB%B2%A8%EC%97%85-1/">내블로그2</a></p>
+<h3 id="Activity의-생명주기"><a href="#Activity의-생명주기" class="headerlink" title="Activity의 생명주기"></a>Activity의 생명주기</h3><p><img src="https://kairo96.gitbooks.io/android/content/pic2/2-4-1-1.jpg" alt=""></p>
+<ul>
+<li><p><strong>onCreate</strong> : 액티비티가 처음 생성되었을 때 호출된다. 여기서 일반적인 정적 설정을 모두 수행해야 하며 이전 상태(intent)가 캡쳐된 경우 이것을 포함한 번들 객체가 전달된다. 항상 뒤에는 <code>onStart</code>가 따라온다.</p>
+</li>
+<li><p><strong>onRestart</strong> : 액티비티가 중단되었다가 다시 시작되기 직전에 호출된다. 항상 뒤에는 <code>onStart</code>가 따라온다.</p>
+</li>
+<li><p><strong>onStart</strong> : 액티비티가 사용자에게 보여지기 직전에 호출된다. 액티비티가 전경으로 나오면 <code>onResume</code>이 따라오고 액티비티가 숨겨지면 <code>onStop</code>이 따라온다.</p>
+</li>
+<li><p><strong>onResume</strong> : 액티비티가 화면에 보여지고 사용자와 상호작용하기 직전에 호출된다. 이 시점에 액티비티는 액티비티 스택의 최상단에 위치한다. 항상 뒤에는 <code>onPause</code>가 뒤따라온다.</p>
+</li>
+<li><p><strong>onPause</strong> : 다른 액티비티로 넘어가거나, 뒤로 가기를 누르거나, 홈으로 돌아가는 등 현재 액티비티가 사라지기 직전에 호출된다. 데이터를 유지하기 위해 저장하거나 스레드 중지 또는 앱이 종료되기 직전에 실행할 기능 등을 처리하기에 적당하다. <strong>무슨 일은 하든 매우 빨리 끝내야 한다. 이 메서드가 반환될때까지 다음 액티비티가 재개되지 않기 때문이다.</strong> 액티비티가 다시 전경으로 돌아오면 <code>onResume</code>이 뒤따라오고, 액티비티가 보이지 않게 되면 <code>onStop</code>이 뒤따라온다.</p>
+</li>
+<li><p><strong>onStop</strong> : 액티비티가 더이상 사용자에게 보여지지 않을 때 호출된다. <strong>항상 호출되는 것은 아니며 메모리가 부족할 경우 호출이 안될 수 있다</strong>. 액티비티가 다시 전경으로 돌아오면 onRestart가 뒤따라오고 액티비티가 그대로 사라지면 <code>onDestroy</code>가 뒤따라온다.</p>
+</li>
+<li><p><strong>onDestroy</strong> : 액티비티가 소멸되기 직전에 호출된다. 호출이 안될 경우도 있기에 <strong>만약 액티비티가 종료되는 상황에 반드시 처리할 작업이 있다면 <code>onPause</code>에서 처리를 해야한다. </strong>시스템이 비상 시에 메모리를 복구해야 할 경우 <strong>onStop과 onDestroy는 호출되지 않을 수도</strong> 있다. 따라서, 중요한 영구적 데이터를 보관할 경우 onPause()를 사용해야한다.</p>
+</li>
+</ul>
+<p>참고 : <a href="https://hyeonu1258.github.io/2018/03/26/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EB%A9%B4%EC%A0%91/" target="_blank" rel="noopener">Activity Lifecycle</a>, <a href="http://one-delay.tistory.com/8?category=766130" target="_blank" rel="noopener">내블로그1</a>, <a href="https://onedelay.github.io/2018/11/07/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%EB%A0%88%EB%B2%A8%EC%97%85-1/">내블로그2</a></p>
 <hr>
 <p><strong>Q. 앱을 사용하는 도중에 카카오톡 메세지가 온다면 사용하던 앱의 TopActivity의 생명주기는 어떤 상태가 되나?</strong></p>
 <p>A. onPause()</p>
@@ -243,6 +266,8 @@
 <p>A. 실행중이던 액티비티는 onPause() - onStop()</p>
 <p><strong>Q. onRestart는 언제 호출 되나?</strong></p>
 <p>A. (다른 액티비티에 깔려서) onStop 상태에 있다가 다시 돌아오면 호출</p>
+<p><strong>Q. 화면이 회전하면?</strong></p>
+<p>A. onPause() - onStop() - onDestroy() - onCreate() - onStart() - onResume(). 현재 액티비티를 destroy 하고 새로 생성하기 때문에, 기존 데이터를 유지하기 위해서는 <code>onSaveInstanceState()</code>에서 Bundle에 데이터를 저장하도록 오버라이드해야한다.</p>
 <p><a href="#안드로이드-면접-질문">위로</a></p>
 <p><br></p>
 <h3 id="Fragment의-생명주기"><a href="#Fragment의-생명주기" class="headerlink" title="Fragment의 생명주기"></a>Fragment의 생명주기</h3><p><img src="https://i.stack.imgur.com/fRxIQ.png" alt=""></p>
@@ -291,7 +316,14 @@
 </ul>
 <p><a href="#안드로이드-면접-질문">위로</a></p>
 <p><br></p>
-<h3 id="ConstraintLayout"><a href="#ConstraintLayout" class="headerlink" title="ConstraintLayout"></a>ConstraintLayout</h3><p>참고 : <a href="https://developer.android.com/training/constraint-layout/" target="_blank" rel="noopener">https://developer.android.com/training/constraint-layout/</a></p>
+<h3 id="ConstraintLayout"><a href="#ConstraintLayout" class="headerlink" title="ConstraintLayout"></a>ConstraintLayout</h3><ul>
+<li>ConstraintLayout 은 뷰의 상하좌우를 주변 또는 부모 뷰와 연관을 지어 위치시킬 수 있다.</li>
+<li>bias 를 통해 비율적으로 배치시킬 수도 있고, chain 을 사용하여 마치 그룹화한 것처럼 사용할수도 있다.</li>
+<li>ratio 를 사용하여 너비와 높이를 비율대로 설정할 수도 있는 등 유연한 배치가 가능하다.</li>
+<li>ConstraintLayout 의 가장 큰 장점은 View Hierarchy 를 수평적으로 평평하게 만든다는 것이다.</li>
+<li>최대 8계층으로 구성되어 있는 RelativeLayout 구조를 하나의 계층으로 줄일 수 있는 효과를 볼 수 있다.</li>
+</ul>
+<p>참고 : <a href="https://hyeonu1258.github.io/2018/04/17/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EB%A9%B4%EC%A0%913/" target="_blank" rel="noopener">Constraint Layout</a>, <a href="https://developer.android.com/training/constraint-layout/" target="_blank" rel="noopener">Android developer docs</a></p>
 <p><a href="#안드로이드-면접-질문">위로</a></p>
 
         </div>
@@ -300,7 +332,7 @@
 
 
 
-    <a data-url="https://Onedelay.github.io/2018/12/07/안드로이드-질문모음-1/" data-id="cjpdj29q2000orgvycurb9xxg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://Onedelay.github.io/2018/12/07/안드로이드-질문모음-1/" data-id="cjpj8tz8v000o64vya2bjop5f" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -428,7 +460,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CS/">CS</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/CS/자료구조/">자료구조</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a><span class="category-list-count">20</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/Android/">Android</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/Etc/">Etc</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/For-Interview/">For Interview</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/Language/">Language</a><span class="category-list-count">8</span></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CS/">CS</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/CS/자료구조/">자료구조</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a><span class="category-list-count">21</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/Android/">Android</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/Etc/">Etc</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/For-Interview/">For Interview</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/Language/">Language</a><span class="category-list-count">8</span></li></ul></li></ul>
         </div>
     </div>
 
@@ -439,6 +471,15 @@
         <h3 class="widget-title">recents</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/For-Interview/">For Interview</a></p>
+                            <p class="item-title"><a href="/2018/12/11/자바기초질문-2/" class="title">자바 질문 모음 _ 2</a></p>
+                            <p class="item-date"><time datetime="2018-12-11T02:44:12.000Z" itemprop="datePublished">2018-12-11</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -476,15 +517,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Programming/">Programming</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programming/For-Interview/">For Interview</a></p>
-                            <p class="item-title"><a href="/2018/12/04/자바기초질문-링크모음/" class="title">자바 기초 질문 모음 _ 1</a></p>
-                            <p class="item-date"><time datetime="2018-12-04T07:32:22.000Z" itemprop="datePublished">2018-12-04</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -494,7 +526,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">8</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">8</span></li></ul>
         </div>
     </div>
 
@@ -504,7 +536,7 @@
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/CS/" style="font-size: 10px;">CS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/android/" style="font-size: 18px;">android</a> <a href="/tags/cs/" style="font-size: 14px;">cs</a> <a href="/tags/kotlin/" style="font-size: 20px;">kotlin</a> <a href="/tags/mvp/" style="font-size: 12px;">mvp</a> <a href="/tags/mvvm/" style="font-size: 10px;">mvvm</a> <a href="/tags/recyclerview/" style="font-size: 12px;">recyclerview</a> <a href="/tags/spring-boot/" style="font-size: 10px;">spring boot</a> <a href="/tags/자료구조/" style="font-size: 16px;">자료구조</a> <a href="/tags/집합/" style="font-size: 10px;">집합</a> <a href="/tags/해시/" style="font-size: 10px;">해시</a> <a href="/tags/힙/" style="font-size: 10px;">힙</a>
+            <a href="/tags/CS/" style="font-size: 10px;">CS</a> <a href="/tags/Java/" style="font-size: 12px;">Java</a> <a href="/tags/android/" style="font-size: 18px;">android</a> <a href="/tags/cs/" style="font-size: 14px;">cs</a> <a href="/tags/kotlin/" style="font-size: 20px;">kotlin</a> <a href="/tags/mvp/" style="font-size: 12px;">mvp</a> <a href="/tags/mvvm/" style="font-size: 10px;">mvvm</a> <a href="/tags/recyclerview/" style="font-size: 12px;">recyclerview</a> <a href="/tags/spring-boot/" style="font-size: 10px;">spring boot</a> <a href="/tags/자료구조/" style="font-size: 16px;">자료구조</a> <a href="/tags/집합/" style="font-size: 10px;">집합</a> <a href="/tags/해시/" style="font-size: 10px;">해시</a> <a href="/tags/힙/" style="font-size: 10px;">힙</a>
         </div>
     </div>
 
