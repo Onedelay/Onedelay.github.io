@@ -21,7 +21,7 @@
 <meta property="og:description" content="자바 질문 클래스와 객체 자바 기본형과 Wrapper 클래스 자바 컬렉션 종류와 차이점 String 객체의 equals 메서드 VS == 연산자 추상화란? 추상클래스란? 인터페이스란? 추상클래스 VS 인터페이스 String Mutable 이란?  원본출처, 내용출처  클래스와 객체클래스객체를 정의하는 틀 또는 설계도. 객체의 상태를 나타내는 필드와 객체의">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://t1.daumcdn.net/cfile/tistory/2614AF3655269C1129">
-<meta property="og:updated_time" content="2018-12-11T04:27:38.610Z">
+<meta property="og:updated_time" content="2018-12-11T14:01:26.513Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="자바 질문 모음 _ 1">
 <meta name="twitter:description" content="자바 질문 클래스와 객체 자바 기본형과 Wrapper 클래스 자바 컬렉션 종류와 차이점 String 객체의 equals 메서드 VS == 연산자 추상화란? 추상클래스란? 인터페이스란? 추상클래스 VS 인터페이스 String Mutable 이란?  원본출처, 내용출처  클래스와 객체클래스객체를 정의하는 틀 또는 설계도. 객체의 상태를 나타내는 필드와 객체의">
@@ -292,7 +292,7 @@
 <p>참고 : <a href="http://tcpschool.com/java/java_collectionFramework_concept" target="_blank" rel="noopener">컬렉션 프레임워크의 개념</a>, <a href="http://hackersstudy.tistory.com/26" target="_blank" rel="noopener"> Java의 Collections (List, Set, Map) 이해</a></p>
 <p><a href="#자바-질문">위로</a></p>
 <p><br></p>
-<h3 id="equals-메서드-VS-연산자"><a href="#equals-메서드-VS-연산자" class="headerlink" title="equals 메서드 VS == 연산자"></a>equals 메서드 VS == 연산자</h3><h5 id="4-1-아래-코드의-결과-예상"><a href="#4-1-아래-코드의-결과-예상" class="headerlink" title="4-1 아래 코드의 결과 예상"></a>4-1 아래 코드의 결과 예상</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="string">"abc"</span>;</span><br><span class="line">String s2 = <span class="keyword">new</span> String(<span class="string">"abc"</span>);</span><br><span class="line">s1 == s2;</span><br></pre></td></tr></table></figure>
+<h3 id="equals-메서드-VS-연산자"><a href="#equals-메서드-VS-연산자" class="headerlink" title="equals 메서드 VS == 연산자"></a>equals 메서드 VS == 연산자</h3><h5 id="Q-아래-코드의-결과-예상"><a href="#Q-아래-코드의-결과-예상" class="headerlink" title="Q. 아래 코드의 결과 예상"></a>Q. 아래 코드의 결과 예상</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="string">"abc"</span>;</span><br><span class="line">String s2 = <span class="keyword">new</span> String(<span class="string">"abc"</span>);</span><br><span class="line">s1 == s2;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>정답 : false</li>
 <li>이유 : <code>s1</code>은 literal로 <strong>String Constant Pool</strong>에서 관리되고, <code>s2</code>는 new 연산자를 통해 <strong>Heap 영역</strong>에 String 객체를 생성하기 때문. == 연산자는 객체의 주소값을 비교하는 연산자로, 같은 객체를 참조하는 것이 아니기때문에 false<ul>
@@ -301,19 +301,19 @@
 </ul>
 </li>
 </ul>
-<h5 id="4-2-위-연산을-true로-만들려면"><a href="#4-2-위-연산을-true로-만들려면" class="headerlink" title="4-2 위 연산을 true로 만들려면?"></a>4-2 위 연산을 true로 만들려면?</h5><ol>
+<h5 id="Q-위-연산을-true로-만들려면"><a href="#Q-위-연산을-true로-만들려면" class="headerlink" title="Q. 위 연산을 true로 만들려면?"></a>Q. 위 연산을 true로 만들려면?</h5><ol>
 <li><code>s1.equals(s2)</code> 문자열 자체를 비교한 결과이므로 true</li>
 <li><code>s2.intern()</code>를 이용하면 SCP의 문자열을 가져와 비교하므로 true<ul>
-<li>intern() 메소드는 <em>SPC</em>를 탐색해서 문자열이 존재하면 그것을 리턴하고, 아니면 새로운 문자열을 <em>SPC</em>에 추가한 후 다시 반환한다. 따라서 new를 사용하건 <em>literal</em>을 사용하건 intern() 메소드를 사용하면 같은 문자열을 반환하게 된다.</li>
+<li>intern() 메소드는 <em>SCP</em>를 탐색해서 문자열이 존재하면 그것을 리턴하고, 아니면 새로운 문자열을 <em>SCP</em>에 추가한 후 다시 반환한다. 따라서 new를 사용하건 <em>literal</em>을 사용하건 intern() 메소드를 사용하면 같은 문자열을 반환하게 된다.</li>
 </ul>
 </li>
 </ol>
-<h5 id="4-3-String-Pool이-위치하는-영역은"><a href="#4-3-String-Pool이-위치하는-영역은" class="headerlink" title="4-3 String Pool이 위치하는 영역은?"></a>4-3 String Pool이 위치하는 영역은?</h5><ul>
-<li><p>Heap 영역.</p>
+<h5 id="Q-String-Constant-Pool이-위치하는-영역은"><a href="#Q-String-Constant-Pool이-위치하는-영역은" class="headerlink" title="Q. String Constant Pool이 위치하는 영역은?"></a>Q. String Constant Pool이 위치하는 영역은?</h5><ul>
+<li><p>Heap 영역</p>
 </li>
-<li><p>Perm 영역에서 Java7에서 Heap으로 바뀜</p>
+<li><p>Java 7부터 Perm 영역에서 Heap으로 바뀜</p>
 <ul>
-<li>이점 : String pool의 모든 문자열도 GC의 대상이 될 수 있음.</li>
+<li>이점 : SCP의 모든 문자열도 GC의 대상이 될 수 있음</li>
 </ul>
 </li>
 </ul>
@@ -327,7 +327,7 @@
 <li>추상 메소드(선언은되어있으나 코드 구현X, 껍데기만 있는)를 포함하는 클래스(abstract로 선언)</li>
 <li>추상메소드가 하나도 없지만 abstract로 선언한 클래스</li>
 </ol>
-<h5 id="6-1-추상클래스의-용도"><a href="#6-1-추상클래스의-용도" class="headerlink" title="6-1 추상클래스의 용도"></a>6-1 추상클래스의 용도</h5><p>추상클래스를 상속받은 서브 클래스는 개발자에 따라 다양하게 구현 (모든 개발자들이 서브 클래스에서 추상 클래스에 선언된 추상 메소드를 필수로 구현해야 한다)</p>
+<h5 id="추상클래스의-용도"><a href="#추상클래스의-용도" class="headerlink" title="추상클래스의 용도"></a>추상클래스의 용도</h5><p>추상클래스를 상속받은 서브 클래스는 개발자에 따라 다양하게 구현 (모든 개발자들이 서브 클래스에서 추상 클래스에 선언된 추상 메소드를 필수로 구현해야 한다)</p>
 <p>추상클래스를 책의 목차에 비유하면, 서브 클래스는 목차에 따라 작성된 실제 책과 같다.</p>
 <p>추상 클래스를 이용하면 응용프로그램의 설계와 구현을 분리할 수 있다.</p>
 <p>추상 클래스로 기본 방향을 잡아놓고 서브 클래스에서 구현하면 구현 작업에 쉬워진다. 또한, 추상 클래스는 계층적 상속 관계를 가지는 클래스들의 구조를 만들 때 적합하다.</p>
@@ -356,36 +356,38 @@
 <p>참고 : <a href="http://tcpschool.com/java/java_polymorphism_interface" target="_blank" rel="noopener">다형성-인터페이스</a></p>
 <p><a href="#자바-질문">위로</a></p>
 <p><br></p>
-<h3 id="추상클래스-VS-인터페이스"><a href="#추상클래스-VS-인터페이스" class="headerlink" title="추상클래스 VS 인터페이스"></a>추상클래스 VS 인터페이스</h3><table>
-<thead>
-<tr>
-<th>추상클래스</th>
-<th>인터페이스</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>일반 메소드 포함 가능</td>
-<td>모든 메소드가 추상 메소드</td>
-</tr>
-<tr>
-<td>상수 필드만 포함 가능</td>
-<td>상수, 변수 필드 포함 가능</td>
-</tr>
-<tr>
-<td>모든 서브 클래스에 공통된 메소드가 있는 경우에는 추상클래스가 적합</td>
-<td>다중 상속 지원</td>
-</tr>
-</tbody>
-</table>
-<p>참고 : <a href="https://brunch.co.kr/@kd4/6" target="_blank" rel="noopener">자바의 추상클래스와 인터페이스</a></p>
+<h3 id="추상클래스-VS-인터페이스"><a href="#추상클래스-VS-인터페이스" class="headerlink" title="추상클래스 VS 인터페이스"></a>추상클래스 VS 인터페이스</h3><h4 id="1-공통점"><a href="#1-공통점" class="headerlink" title="1. 공통점"></a>1. 공통점</h4><ul>
+<li>메소드의 선언만 있고 구현 내용이 없는 클래스</li>
+<li>따라서 추상클래스와 인터페이스를 가지고 새로운 인스턴스를 생성할 수 없다.</li>
+<li>추상클래스를 extends로 구현한 자식클래스나, 인터페이스를 implements한 자식 클래스만이 객체를 생성할 수 있다.</li>
+<li>Is-a 관계가 핵심 (Ex. 냉장고 is a 가전제품, 커피머신 is a 가전제품)</li>
+<li><strong>결국 자식 클래스가 무언가 반드시 구현하도록 위임해야할 때 사용해야한다.</strong></li>
+</ul>
+<h4 id="2-차이점"><a href="#2-차이점" class="headerlink" title="2. 차이점"></a>2. 차이점</h4><h5 id="추상클래스-1"><a href="#추상클래스-1" class="headerlink" title="추상클래스"></a>추상클래스</h5><ul>
+<li><p>미완성된 설계도</p>
+</li>
+<li><p>추상메서드(abstract method)가 하나라도 존재하는 클래스</p>
+</li>
+<li>일부는 구현된 일반 메서드도 존재</li>
+<li>요약 : <strong>다중상속 불가, 멤버변수 존재 가능, 일반 메서드 존재 가능</strong></li>
+</ul>
+<h5 id="인터페이스-1"><a href="#인터페이스-1" class="headerlink" title="인터페이스"></a>인터페이스</h5><ul>
+<li><p>밑그림만 있는 기본 설계도</p>
+</li>
+<li><p>구현하는 모든 클래스에 대해 특정 메서드가 반드시 존재하도록 강제하여 구현 객체들이 같은 동작을 하도록 보장는 역할</p>
+</li>
+<li>Java 8 부터 default 키워드를 통해 일반 메서드 구현 가능</li>
+<li>주 목적은 <strong>구현 객체가 같은 동작을 한다는 것을 보장하기 위함</strong></li>
+<li>요약 : <strong>다중상속 가능, 상수만 존재 가능, 모든 멤버가 public</strong></li>
+</ul>
+<p>참고 : <a href="https://jeong-pro.tistory.com/82" target="_blank" rel="noopener">Java 인터페이스와 추상클래스 공통점, 차이점 정리</a>, <a href="http://loustler.io/languages/oop_interface_and_abstract_class/" target="_blank" rel="noopener">인터페이스(interface)와 추상 클래스(abstract class)</a>, <a href="https://brunch.co.kr/@kd4/6" target="_blank" rel="noopener">자바의 추상클래스와 인터페이스</a></p>
 <p><a href="#자바-질문">위로</a></p>
 <p><br></p>
 <h3 id="String-Mutable"><a href="#String-Mutable" class="headerlink" title="String Mutable"></a>String Mutable</h3><ul>
-<li><strong>Immutable(가변) 객체</strong> : 객체 내의 특정요소를 변경 할 수 있는 객체 (Ex. List, ArrayList, HashMap)</li>
-<li><strong>Mutable(불변) 객체</strong> : 객체 내의 특정 요소의 값을 변경 할 수 없는 객체 (Ex. String, Integer, Double, Long). setter 없음, heap 영역에서 변경불가 라는 뜻(String a = ”a”; a = ”b” 와 같은 재할당은 가능)</li>
+<li><strong>Mutable(가변) 객체</strong> : 객체 내의 특정요소를 변경 할 수 있는 객체 (Ex. List, ArrayList, HashMap)</li>
+<li><strong>Immutable(불변) 객체</strong> : 객체 내의 특정 요소의 값을 변경 할 수 없는 객체 (Ex. String, Integer, Double, Long). setter 없음. heap 영역에서 변경불가 라는 뜻(String a = ”a”; a = ”b” 와 같은 재할당은 가능)</li>
 </ul>
-<h5 id="9-1-StringBuffer-VS-String"><a href="#9-1-StringBuffer-VS-String" class="headerlink" title="9-1 StringBuffer VS String"></a>9-1 StringBuffer VS String</h5><p>StringBuffer는 Mutable</p>
+<h5 id="StringBuffer-VS-String"><a href="#StringBuffer-VS-String" class="headerlink" title="StringBuffer VS String"></a>StringBuffer VS String</h5><p>StringBuffer는 Mutable, String은 Immutable</p>
 <p>참고 : <a href="https://novemberde.github.io/2017/04/15/String_0.html" target="_blank" rel="noopener">Java에서 String, StringBuilder, StringBuffer의 차이</a></p>
 <p><a href="#자바-질문">위로</a></p>
 <p><br></p>

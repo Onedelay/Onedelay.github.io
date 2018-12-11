@@ -21,7 +21,7 @@
 <meta property="og:description" content="안드로이드 면접 질문진행했던 프로젝트에서 사용한 라이브러리에 대해서 정리하는 포스트  이미지 로딩 라이브러리 기본  Picasso  Glide 쓰는중 Picasso VS Glide 아직 안씀 Retrofit 아직 안씀 Volley 아직 안씀 Retrofit VS Volley 아직 안씀   0. 이미지 로딩 라이브러리 기본이미지 로딩 과정의 숙제 불안한 HT">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://d2.naver.com/content/images/2015/06/helloworld-429368-2.png">
-<meta property="og:updated_time" content="2018-12-11T09:25:57.361Z">
+<meta property="og:updated_time" content="2018-12-11T14:11:35.920Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="안드로이드 면접대비 _ 3">
 <meta name="twitter:description" content="안드로이드 면접 질문진행했던 프로젝트에서 사용한 라이브러리에 대해서 정리하는 포스트  이미지 로딩 라이브러리 기본  Picasso  Glide 쓰는중 Picasso VS Glide 아직 안씀 Retrofit 아직 안씀 Volley 아직 안씀 Retrofit VS Volley 아직 안씀   0. 이미지 로딩 라이브러리 기본이미지 로딩 과정의 숙제 불안한 HT">
@@ -221,6 +221,9 @@
 <p><a href="#안드로이드-면접-질문">위로</a></p>
 <p><br></p>
 <h2 id="1-Picasso"><a href="#1-Picasso" class="headerlink" title="1. Picasso"></a>1. Picasso</h2><p>Picasso는 Square Inc.가 개발한 이미지로드 라이브러리이다. 그리고 Square Inc.에서 개발한 HTTP 클라이언트 오픈 소스인 OkHttp를 HTTP 클라이언트로 활용한다. 메서드 체인 방식이라 직관적이고 사용하기 편리하다.</p>
+<blockquote>
+<p><strong>사용한 이유</strong></p>
+</blockquote>
 <h4 id="특징-및-기능"><a href="#특징-및-기능" class="headerlink" title="특징 및 기능"></a>특징 및 기능</h4><ul>
 <li>이미지의 원본 사용</li>
 <li><p>기본 ARGB_8888, RGB_565 변환 가능</p>
@@ -266,7 +269,10 @@
 <h2 id="2-Glide"><a href="#2-Glide" class="headerlink" title="2. Glide"></a>2. Glide</h2><p>Glide는 Google에서 개발한 이미지로드 라이브러리.</p>
 <p>Glide is a fast and efficient image loading library for Android focused on smooth scrolling. Glide offers an easy to use API, a performant and extensible resource decoding pipeline and automatic resource pooling.</p>
 <p>Glide supports fetching, decoding, and displaying video stills, images, and animated GIFs. Glide includes a flexible api that allows developers to plug in to almost any network stack. By default Glide uses a custom HttpUrlConnection based stack, but also includes utility libraries plug in to Google’s Volley project or Square’s OkHttp library instead.</p>
-<p>Glide’s primary focus is on making <strong>scrolling any kind of a list of images as smooth</strong> and fast as possible, but Glide is also effective for almost any case where you need to fetch, resize, and display a remote image.</p>
+<p>Glide’s primary focus is on making scrolling any kind of a list of images as smooth and fast as possible, but Glide is also effective for almost any case where you need to fetch, resize, and display a remote image.</p>
+<blockquote>
+<p><strong>사용한 이유</strong></p>
+</blockquote>
 <h4 id="특징-및-기능-1"><a href="#특징-및-기능-1" class="headerlink" title="특징 및 기능"></a>특징 및 기능</h4><ul>
 <li>기본 RGB_565(Half size), ARGB_8888 변환 가능</li>
 <li>ImageView에 맞게 Resize</li>
@@ -297,11 +303,24 @@
 </ul>
 <p><a href="#안드로이드-면접-질문">위로</a></p>
 <p><br></p>
-<h2 id="4-Retrofit"><a href="#4-Retrofit" class="headerlink" title="4. Retrofit"></a>4. Retrofit</h2><p><a href="#안드로이드-면접-질문">위로</a></p>
+<h2 id="4-Retrofit"><a href="#4-Retrofit" class="headerlink" title="4. Retrofit"></a>4. Retrofit</h2><blockquote>
+<p><strong>사용한 이유</strong></p>
+<ul>
+<li>REST API 라이브러리 중 가장 좋은 성능</li>
+<li>AsynTask, HttpURLConnection에 비해 훨씬 간단한 구현 방법</li>
+</ul>
+</blockquote>
+<p><a href="#안드로이드-면접-질문">위로</a></p>
 <p><br></p>
-<h2 id="5-Volley"><a href="#5-Volley" class="headerlink" title="5. Volley"></a>5. Volley</h2><p><a href="#안드로이드-면접-질문">위로</a></p>
+<h2 id="5-Volley"><a href="#5-Volley" class="headerlink" title="5. Volley"></a>5. Volley</h2><blockquote>
+<p><strong>사용한 이유</strong></p>
+</blockquote>
+<p><a href="#안드로이드-면접-질문">위로</a></p>
 <p><br></p>
-<h2 id="6-Retrofit-VS-Volley"><a href="#6-Retrofit-VS-Volley" class="headerlink" title="6. Retrofit VS Volley"></a>6. Retrofit VS Volley</h2><p><a href="#안드로이드-면접-질문">위로</a></p>
+<h2 id="6-Retrofit-VS-Volley"><a href="#6-Retrofit-VS-Volley" class="headerlink" title="6. Retrofit VS Volley"></a>6. Retrofit VS Volley</h2><h4 id="참고링크-3"><a href="#참고링크-3" class="headerlink" title="참고링크"></a>참고링크</h4><ul>
+<li><a href="http://instructure.github.io/blog/2013/12/09/volley-vs-retrofit/" target="_blank" rel="noopener">Android Async HTTP Clients: Volley vs Retrofit</a></li>
+</ul>
+<p><a href="#안드로이드-면접-질문">위로</a></p>
 
         </div>
         <footer class="article-footer">
